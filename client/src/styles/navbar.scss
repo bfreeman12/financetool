@@ -1,0 +1,34 @@
+.navbar {
+  background-color: rgba(40, 38, 38, 0.973);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 8vh;
+  font-family: monospace;
+  h1 {
+    padding-left: 2rem;
+    user-select: none;
+    color: rgb(62, 213, 112);
+  }
+  button {
+    user-select: none;
+    all: unset;
+    .icon {
+      padding-right: 2rem;
+
+      color: white;
+      font-size: x-large;
+    }
+    .icon:hover {
+      color: rgba(255, 255, 255, 0.801);
+    }
+    .icon:active {
+      scale: 1.1;
+      color: rgba(255, 255, 255, 0.545);
+    }
+  }
+
+  button:hover {
+    cursor: pointer;
+  }
+}

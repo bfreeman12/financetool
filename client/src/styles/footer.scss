@@ -1,0 +1,23 @@
+.footer {
+  position: sticky;
+  top: 95%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  user-select: none;
+  a {
+    padding: 2px 6px;
+    border-bottom: 1.2px solid rgba(0, 0, 0, 0.321);
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+  .link:hover {
+    cursor: pointer;
+    background-color: rgb(89, 89, 89);
+  }
+  .link:active {
+    background-color: rgba(74, 74, 74, 0.353);
+  }
+  
+}

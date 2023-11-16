@@ -1,10 +1,17 @@
-function App() {
+import "./app.css";
+import PdfPage from "./components/Pdfpage";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Forms from "./pages/Forms";
 
+function App() {
   return (
-    <>
-      <h1>Hello, world!</h1> 
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route index element={<PdfPage />} />
+        <Route path="/forms" element={<Forms />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
