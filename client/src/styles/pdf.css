@@ -1,4 +1,44 @@
 .pdf-body {
-  color: white;
+  color: #ffffff;
   list-style-type: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  gap: 1rem;
+  padding: 20px;
+}
+.pdf-body .pdf-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(112, 112, 112, 0.432);
+  padding: 15px;
+  border-radius: 5px;
+  transition: all 0.3s ease-in-out;
+}
+.pdf-body input[type=checkbox] {
+  scale: 1.5;
+}
+.pdf-body .pdf-button {
+  border: none;
+  background: none;
+  color: #ffffff;
+}
+.pdf-body .pdf-button:hover {
+  color: #666;
+}
+.pdf-body .pdf-button:active {
+  color: #363535;
+}
+.pdf-body .fa-icon {
+  font-size: 24px;
+}
+.pdf-body .fa-icon:hover {
+  color: #666;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  gap: 10%;
 }/*# sourceMappingURL=pdf.css.map */

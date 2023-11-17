@@ -3,6 +3,9 @@ import "../styles/pdf.css";
 import Footer from "./Footer";
 import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
+import fetchPdf from "../function/apifetch";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleDown } from "@fortawesome/free-solid-svg-icons";
 
 const pdfList = [
   "DD Form 2875 DEAMS",
@@ -28,14 +31,19 @@ const PdfPage = () => {
 
   const RenderPdf = () => {
     return pdfList.map((pdf) => (
-      <li key={pdf}>
+      <li key={pdf} className="pdf-item">
         <input
           type="checkbox"
           id={pdf}
           checked={selectedPdfs.includes(pdf)}
           onChange={() => handleCheckboxChange(pdf)}
         />
-        <label htmlFor={pdf}>{pdf}</label>
+        <label className="pdf-label" htmlFor={pdf}>
+          {pdf}
+        </label>
+        <button className="pdf-button" onClick={() => fetchPdf(pdf)}>
+          <FontAwesomeIcon className="fa-icon" icon={faCircleDown} />
+        </button>
       </li>
     ));
   };
@@ -46,12 +54,16 @@ const PdfPage = () => {
       <div className="content">
         <ul className="pdf-body">
           {pdfList.length > 0 ? <RenderPdf /> : "no pdfs found"}
+        </ul>
+        <div className="button-group">
           <button onClick={() => setSelectedPdfs(pdfList)}>Select All</button>
           <button onClick={() => setSelectedPdfs([])}>Clear All</button>
-          <Link to="/forms" state={{ data: selectedPdfs }}>
-            Submit
-          </Link>
-        </ul>
+          <button>
+            <Link to="/forms" state={{ data: selectedPdfs }}>
+              Submit
+            </Link>
+          </button>
+        </div>
       </div>
       <Footer />
     </>

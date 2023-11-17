@@ -9,10 +9,10 @@ const Forms = () => {
   return (
     <>
       <Navbar />
-      {!state || !state.data || state.data.length === 0 ? (
+      {state?.data?.length === 0 || !state?.data ? (
         <p style={{ color: "white" }}>No data found</p>
       ) : (
-        state.data
+        <h1 style={{ color: "white" }}>{state?.data}</h1>
       )}
       <Footer />
     </>
