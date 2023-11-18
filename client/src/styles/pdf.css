@@ -1,23 +1,33 @@
 .pdf-body {
   color: #ffffff;
-  list-style-type: none;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 1rem;
   padding: 20px;
 }
 .pdf-body .pdf-item {
+  flex: 0 30%;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
   background: rgba(112, 112, 112, 0.432);
   padding: 15px;
   border-radius: 5px;
-  transition: all 0.3s ease-in-out;
+  gap: 10%;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .pdf-body input[type=checkbox] {
   scale: 1.5;
+}
+.pdf-body input[type=checkbox]:hover {
+  cursor: pointer;
+}
+.pdf-body label:hover {
+  cursor: pointer;
 }
 .pdf-body .pdf-button {
   border: none;
@@ -26,14 +36,17 @@
 }
 .pdf-body .pdf-button:hover {
   color: #666;
+  cursor: pointer;
 }
 .pdf-body .pdf-button:active {
   color: #363535;
+  cursor: pointer;
 }
-.pdf-body .fa-icon {
+
+.fa-icon {
   font-size: 24px;
 }
-.pdf-body .fa-icon:hover {
+.fa-icon:hover {
   color: #666;
 }
 
