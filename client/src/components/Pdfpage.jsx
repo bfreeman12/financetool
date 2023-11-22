@@ -59,7 +59,7 @@ const PdfPage = () => {
           <button onClick={() => setSelectedPdfs(pdfList)}>Select All</button>
           <button onClick={() => setSelectedPdfs([])}>Clear All</button>
           <button>
-            <Link to="/forms" state={{ data: selectedPdfs }}>
+            <Link className="link" to="/forms" state={{ data: selectedPdfs }}>
               Submit
             </Link>
           </button>

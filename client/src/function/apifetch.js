@@ -14,10 +14,16 @@ export default async function fetchPdf(pdf) {
   const blob = await response.blob();
   const url = URL.createObjectURL(blob);
 
-  const a = document.createElement("a");
-  a.href = url;
-  a.target = "_blank";
-  a.click();
+  const isIphone = /iPhone|iPod/.test(navigator.userAgent);
+
+  if (isIphone) {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = pdf;
+    link.click();
+  } else {
+    window.open(url, "_blank");
+  }
 
   return url;
 }

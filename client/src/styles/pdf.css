@@ -16,18 +16,9 @@
   padding: 15px;
   border-radius: 5px;
   gap: 10%;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
 }
 .pdf-body input[type=checkbox] {
   scale: 1.5;
-}
-.pdf-body input[type=checkbox]:hover {
-  cursor: pointer;
-}
-.pdf-body label:hover {
-  cursor: pointer;
 }
 .pdf-body .pdf-button {
   border: none;
@@ -54,4 +45,28 @@
   display: flex;
   justify-content: center;
   gap: 10%;
+}
+.button-group button {
+  cursor: pointer;
+  margin: 10px 0;
+}
+.button-group .link {
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .pdf-body {
+    gap: 0.5rem;
+  }
+  .pdf-body .pdf-item {
+    flex: 0 90%;
+  }
+  .fa-icon {
+    font-size: 18px;
+  }
+  .button-group button {
+    padding: 10px;
+    height: 30px;
+    width: 20%;
+  }
 }/*# sourceMappingURL=pdf.css.map */

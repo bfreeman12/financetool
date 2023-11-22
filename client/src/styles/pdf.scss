@@ -15,16 +15,9 @@
     padding: 15px;
     border-radius: 5px;
     gap: 10%;
-    user-select: none;
   }
   input[type="checkbox"] {
     scale: 1.5;
-    &:hover {
-      cursor: pointer;
-    }
-  }
-  label:hover {
-    cursor: pointer;
   }
   .pdf-button {
     border: none;
@@ -40,6 +33,7 @@
     }
   }
 }
+
 .fa-icon {
   font-size: 24px;
   &:hover {
@@ -51,4 +45,30 @@
   display: flex;
   justify-content: center;
   gap: 10%;
+  button {
+    cursor: pointer;
+    margin: 10px 0;
+  }
+  .link {
+    text-decoration: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .pdf-body {
+    gap: 0.5rem;
+    .pdf-item {
+      flex: 0 90%;
+    }
+  }
+  .fa-icon {
+    font-size: 18px;
+  }
+  .button-group {
+    button {
+      padding: 10px;
+      height: 30px;
+      width: 20%;
+    }
+  }
 }
