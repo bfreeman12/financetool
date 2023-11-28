@@ -1,22 +1,28 @@
-const fillPdfTemplate = async (formData) => {
-  const url = "clientdaf594.pdf"; // URL or path to your PDF template
+import { PDFDocument } from "pdf-lib";
+
+export const fillPdfTemplate = async (formData) => {
+  console.log(formData);
+  const url = "./daf594.pdf"; // URL or path to your PDF template
   const existingPdfBytes = await fetch(url).then((res) => res.arrayBuffer());
+  console.log(existingPdfBytes);
+  const pdfDoc = await PDFDocument.load(existingPdfBytes, {
+    ignoreEncryption: true,
+  });
 
-  const pdfDoc = await PDFDocument.load(existingPdfBytes);
   const form = pdfDoc.getForm();
-
-  form.getTextField("name").setText(formData.name);
-  form.getTextField("email").setText(formData.email);
+  console.log(form.getFields());
+  form.getTextField("1 NAME Last First MI").setText(formData.name);
+  //form.getTextField("email").setText(formData.email);
   // Set other form fields similarly
 
-  form.flatten(); // Optional: Flatten form fields to prevent further editing
+  // form.flatten(); // Optional: Flatten form fields to prevent further editing
 
   const pdfBytes = await pdfDoc.save();
   return pdfBytes;
 };
 
 // Function to download the filled PDF
-const downloadPdf = (pdfBytes, fileName) => {
+export const downloadPdf = (pdfBytes, fileName) => {
   const blob = new Blob([pdfBytes], { type: "application/pdf" });
   const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);

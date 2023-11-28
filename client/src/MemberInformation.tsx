@@ -3,6 +3,7 @@ import { Form, Row, Col } from "react-bootstrap";
 import MilitaryGradeSelector from "./MilitaryGradeSelector";
 import DutyLocationSelector from "./DutyLocationSelector";
 import AddressComponent from "./AddressComponent";
+import DoDIDComponent from "./DodIDComponent";
 
 function MemberInformationComponent() {
   return (
@@ -29,10 +30,7 @@ function MemberInformationComponent() {
           placeholder="Enter your last name"
         />
       </Form.Group>
-      <Form.Group className="mb-3" controlId="dodID">
-        <Form.Label>DoD ID Number</Form.Label>
-        <Form.Control type="number" placeholder="Enter your DoD ID" />
-      </Form.Group>
+      <DoDIDComponent placeholder="Enter your DoD ID" />
 
       <MilitaryGradeSelector />
       <DutyLocationSelector />

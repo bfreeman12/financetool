@@ -5,7 +5,7 @@ import DutyLocationSelector from "./DutyLocationSelector";
 import Calendar from "react-calendar";
 import { Value } from "react-calendar/dist/cjs/shared/types";
 import "react-calendar/dist/Calendar.css";
-
+import DoDIDComponent from "./DodIDComponent";
 function MarriageStatusComponent() {
   const [maritalStatus, setMaritalStatus] = useState("");
   const [spouseInMilitary, setSpouseInMilitary] = useState(false);
@@ -78,7 +78,14 @@ function MarriageStatusComponent() {
               <div>
                 <Form.Group as={Col} md="4" controlId="spouseName">
                   <Form.Label>Spouse's Name</Form.Label>
-                  <Form.Control type="text" placeholder="Enter spouse's name" />
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter your spouse's name"
+                  />
+                </Form.Group>
+                <Form.Group className="mb-3" controlId="marriageDate">
+                  <Form.Label>Marriage Date</Form.Label>
+                  <Form.Control type="date" />
                 </Form.Group>
                 <Form.Check
                   type="checkbox"
@@ -89,22 +96,10 @@ function MarriageStatusComponent() {
                 {spouseInMilitary && (
                   <div>
                     {/* Additional fields for military spouse */}
-                    <Form.Group className="mb-3" controlId="dodID">
-                      <Form.Label>DoD ID Number</Form.Label>
-                      <Form.Control
-                        type="number"
-                        placeholder="Enter your DoD ID"
-                      />
-                    </Form.Group>
+                    <DoDIDComponent placeholder="Enter your spouse's DoD ID" />
                     <BranchOfServiceSelector />
                     <DutyLocationSelector />
-                    <Form.Group className="mb-3" controlId="marriageDate">
-                      <Form.Label>Marriage Date</Form.Label>
-                      <Calendar
-                        onChange={onChangeMarriage}
-                        value={marriageValue}
-                      />
-                    </Form.Group>
+
                     {/* Add more fields as needed */}
                   </div>
                 )}
@@ -112,14 +107,14 @@ function MarriageStatusComponent() {
             )}
             {maritalStatus === "divorced" && (
               <Form.Group className="mb-3" controlId="marriageDate">
-                <Form.Label>Divorced</Form.Label>
-                <Calendar onChange={onChangeMarriage} value={marriageValue} />
+                <Form.Label>Divorced Date</Form.Label>
+                <Form.Control type="date" />
               </Form.Group>
             )}
             {maritalStatus === "legallySeperated" && (
               <Form.Group className="mb-3" controlId="marriageDate">
                 <Form.Label>Legally Seperated Date</Form.Label>
-                <Calendar onChange={onChangeMarriage} value={marriageValue} />
+                <Form.Control type="date" />
               </Form.Group>
             )}
           </Form.Group>
