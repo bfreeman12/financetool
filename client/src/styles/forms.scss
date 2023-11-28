@@ -1,21 +1,27 @@
-.data-list {
+.queue {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
-  list-style-type: none;
   margin: 0;
-  padding: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
   overflow-x: auto;
   white-space: nowrap;
-}
-
-.data-list li {
-  border-right: 1px solid rgba(255, 255, 255, 0.273);
-  border-left: 1px solid rgba(255, 255, 255, 0.273);
-
-  padding-left: 5px;
-  padding-right: 5px;
-  font-size: 14px;
-  color: white;
+  p {
+    color: white;
+    padding: 0 2rem;
+  }
+  .queue-list {
+    width: 85%;
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    padding-right: 1rem;
+    li {
+      font-size: 14px;
+      color: rgba(255, 255, 255, 0.721);
+      &:first-child {
+        color: white;
+        font-weight: 500;
+      }
+    }
+  }
 }

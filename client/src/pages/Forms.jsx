@@ -1,51 +1,65 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { useLocation } from "react-router-dom";
 import "../styles/forms.css";
+import Form from "../components/Form";
+import Queue from "../components/Queue";
 const Forms = () => {
   let { state } = useLocation();
-  const [data, setData] = useState([...state?.data]);
-  const [filledData, setFilledData] = useState({});
-
-  const handleClick = (e) => {
-    e.preventDefault();
-    if (data.length === 0) {
-      alert("no more forms");
-    } else {
-      setData(data.slice(1));
-    }
-  };
-
-  const DisplayData = () => {
-    if (data.length === 0) {
-      return null;
-    }
-
-    return (
-      <ul className="data-list">
-        {data.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
-    );
-  };
-
+  const [data, setData] = useState(state.data);
+  console.log(data);
   return (
     <>
       <Navbar />
       <div className="form-list">
-        <DisplayData />
+        <Queue data={data} />
       </div>
       <div className="form-body">
-        {data.length ? (
-          <button onClick={(e) => handleClick(e)}>next form</button>
-        ) : (
-          <label>no more form</label>
-        )}
+        <Form />
       </div>
       <Footer />
     </>
   );
 };
+
 export default Forms;
+
+// const userProfile = {
+//   "Full Name": "",
+//   "Official Email": "",
+//   "Duty Title": "",
+//   SSN: "",
+//   "Date Of Birth": "",
+//   Address: "",
+//   City: "",
+//   State: "",
+//   Country: "",
+//   "Zip Code": "",
+//   "Cell Phone": "",
+//   DSN: "",
+//   "Supervisor Name": "",
+//   "Supervisor Email": "",
+//   "Supervisor Phone": "",
+//   Date: "",
+// };
+
+// const payrollFields = {
+//   "Account Type": "",
+//   "Payment Type": "",
+//   "Routing Number": "",
+//   "Account Number": "",
+//   "Check Digit": "",
+//   "Bank Name": "",
+//   "Allotment Type": "",
+//   "Allotment Account Type": "",
+//   "Allotment Decrease": "",
+//   "Allotment Increase": "",
+//   "Allotment New Total": "",
+//   "Allotment Amount": "",
+//   "Allotee Name": "",
+//   "Allotee Routing Number": "",
+//   "Allotee Account Number": "",
+//   "Allotee Check Digit": "",
+//   "Allotee Bank Name": "",
+// };

@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleDown } from "@fortawesome/free-solid-svg-icons";
 
 const pdfList = [
-  "DD Form 2875 DEAMS",
   "2231 Direct Deposit Form",
   "DAF 594",
   "DD 1351-2c",

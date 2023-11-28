@@ -7,7 +7,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/pdfs", express.static("pdfs"));
 
-pdfList = {
+const pdfList = {
   "DD Form 2875 DEAMS": "0001_DD_Form_2875-DEAMS_v2.1.0.pdf",
   "2231 Direct Deposit Form": "2231 Direct Deposit Form.pdf",
   "DAF 594": "daf594.pdf",
