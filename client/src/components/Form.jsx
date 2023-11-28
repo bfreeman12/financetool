@@ -1,7 +1,7 @@
 import React from "react";
 
-const Form = () => {
-  return <div>Form</div>;
+const Form = ({ queue, profile }) => {
+  return <div>{queue}</div>;
 };
 
 export default Form;

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "../styles/pdf.css";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
+import Footer from "../components/Footer";
+import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import fetchPdf from "../function/apifetch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -46,7 +46,6 @@ const PdfPage = () => {
       </li>
     ));
   };
-
   return (
     <>
       <Navbar />
@@ -57,11 +56,14 @@ const PdfPage = () => {
         <div className="button-group">
           <button onClick={() => setSelectedPdfs(pdfList)}>Select All</button>
           <button onClick={() => setSelectedPdfs([])}>Clear All</button>
-          <button>
+
+          {selectedPdfs.length > 0 ? (
             <Link className="link" to="/forms" state={{ data: selectedPdfs }}>
-              Submit
+              <button>Submit</button>
             </Link>
-          </button>
+          ) : (
+            <button disabled>Submit</button>
+          )}
         </div>
       </div>
       <Footer />

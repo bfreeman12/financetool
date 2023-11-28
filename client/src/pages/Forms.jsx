@@ -7,17 +7,15 @@ import Form from "../components/Form";
 import Queue from "../components/Queue";
 const Forms = () => {
   let { state } = useLocation();
-  const [data, setData] = useState(state.data);
-  console.log(data);
+  const [data, setData] = useState(state.data); // all pdfs that are in the queue
+  const [profileData, setProfileData] = useState({}); // user profile data
+
   return (
     <>
       <Navbar />
-      <div className="form-list">
-        <Queue data={data} />
-      </div>
-      <div className="form-body">
-        <Form />
-      </div>
+      <Queue data={data} />
+      <Form profile={setProfileData} queue={data} />
+      {/* using state as a callback for user data */}
       <Footer />
     </>
   );

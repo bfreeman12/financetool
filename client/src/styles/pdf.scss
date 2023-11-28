@@ -40,17 +40,28 @@
     color: #666;
   }
 }
-
 .button-group {
   display: flex;
   justify-content: center;
   gap: 10%;
   button {
+    border: none;
+    height: 2rem;
+    border-radius: 5px;
     cursor: pointer;
     margin: 10px 0;
-  }
-  .link {
-    text-decoration: none;
+    &:active {
+      color: white;
+      background: #6d6d6d;
+    }
+    a {
+      color: black;
+      text-decoration: none;
+      &:active {
+        color: white;
+        background: #6d6d6d;
+      }
+    }
   }
 }
 
