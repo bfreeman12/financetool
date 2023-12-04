@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "../styles/pdf.css";
-import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { Link } from "react-router-dom";
 import fetchPdf from "../function/apifetch";
@@ -66,7 +65,6 @@ const PdfPage = () => {
           )}
         </div>
       </div>
-      <Footer />
     </>
   );
 };

@@ -34,8 +34,6 @@ const Pg2UserProfile = () => {
                   onChange={(e) => setDsn(e.target.value)}
                 />
               </Form.Group>
-            </Row>
-            <Row className="mb-3">
               <Form.Group as={Col} controlId="formUserSocial">
                 <Form.Label>SSN</Form.Label>
                 <Form.Control type="password" placeholder="***-**-****" />
@@ -90,14 +88,12 @@ const Pg2UserProfile = () => {
                   onChange={(e) => setSupervisorPhone(e.target.value)}
                 />
               </Form.Group>
-            </Row>
-            <Row>
-              <Form.Group>
+              <Form.Group className="w-50">
                 <Form.Label>Today's Date</Form.Label>
                 <Form.Control
+                  type="date"
                   value={todaysDate}
                   onChange={(e) => setTodaysDate(e.target.value)}
-                  type="date"
                 />
               </Form.Group>
             </Row>

@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../styles/forms.css";
 const Queue = (data) => {
   const queueFiles = data.data;
   if (queueFiles.length === 0) {

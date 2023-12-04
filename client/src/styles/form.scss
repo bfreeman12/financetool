@@ -1,53 +1,37 @@
 .form-content {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  width: 50%;
-  margin: 0 auto;
-  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
-  p {
-    color: white;
-    user-select: none;
-  }
-  form {
+  align-items: center;
+  width: 100%;
+  color: white;
+  .current-form-label {
+    font-weight: bold;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    width: 100%;
-    label {
-      color: white;
-    }
-    input {
-      user-select: none;
-      width: 80%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      font-size: 16px;
-      color: #333;
-    }
+    padding: 1rem 0;
+  }
+  .current-form {
+    width: 80%;
+  }
+  p {
+    user-select: none;
+  }
+  .form-button-group {
+    padding: 1rem 0;
+    gap: 2rem;
+    display: flex;
+    justify-content: space-evenly;
     button {
-      padding: 10px 20px;
-      margin: 10px;
-      border: none;
-      border-radius: 4px;
-      background-color: #575757;
-      color: #fff;
-      cursor: pointer;
-      &:hover {
-        background-color: #333;
-      }
-      &:active {
-        background-color: #555;
-      }
+      text-align: center;
     }
   }
-  .page-count {
-    user-select: none;
-    color: lightgrey;
+  .form-page-counter {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1rem 0;
+    p {
+      margin: 0 1rem;
+    }
   }
 }
