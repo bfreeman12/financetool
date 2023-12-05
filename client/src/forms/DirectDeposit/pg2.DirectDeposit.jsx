@@ -10,26 +10,24 @@ const Pg2DirectDeposit = () => {
         const {
           allotmentType,
           allotmentAction,
-          allotmentAccountType,
-          allotmentDecrease,
-          allotmentIncrease,
-          allotmentNewTotal,
           allotmentAmount,
-          alloteeName,
-          alloteeRoutingNumber,
-          alloteeAccountNumber,
-          alloteeCheckDigit,
-          alloteeBankName,
+          allotmentNewTotal,
+          allotteeName,
+          allotteeRoutingNumber,
+          allotteeAccountNumber,
+          allotteeCheckDigit,
+          allotteeTitle,
+          allotteeBankName,
           setAllotmentType,
           setAllotmentAction,
-          setAllotmentAccountType,
-          setAllotmentNewTotal,
           setAllotmentAmount,
-          setAlloteeName,
-          setAlloteeRoutingNumber,
-          setAlloteeAccountNumber,
-          setAlloteeCheckDigit,
-          setAlloteeBankName,
+          setAllotmentNewTotal,
+          setAllotteeName,
+          setAllotteeRoutingNumber,
+          setAllotteeAccountNumber,
+          setAllotteeCheckDigit,
+          setAllotteeTitle,
+          setAllotteeBankName,
         } = value.payrollFields;
         return (
           <>
@@ -125,6 +123,8 @@ const Pg2DirectDeposit = () => {
                 <Form.Control
                   type="text"
                   placeholder="Person/Company who will receive allotment"
+                  value={allotteeName}
+                  onChange={(e) => setAllotteeName(e.target.value)}
                 />
               </Form.Group>
               <Form.Group
@@ -133,7 +133,12 @@ const Pg2DirectDeposit = () => {
                 controlId="additionalQuestion1"
               >
                 <Form.Label>Allottee Routing Number</Form.Label>
-                <Form.Control type="text" placeholder="Routing Number" />
+                <Form.Control
+                  type="text"
+                  placeholder="Routing Number"
+                  value={allotteeRoutingNumber}
+                  onChange={(e) => setAllotteeRoutingNumber(e.target.value)}
+                />
               </Form.Group>
               <Form.Group
                 as={Col}
@@ -141,7 +146,14 @@ const Pg2DirectDeposit = () => {
                 controlId="additionalQuestion1"
               >
                 <Form.Label>Allottee Account Number</Form.Label>
-                <Form.Control type="text" placeholder="Account Number" />
+                <Form.Control
+                  type="text"
+                  placeholder="Account Number"
+                  value={allotteeAccountNumber}
+                  onChange={(e) => {
+                    setAllotteeAccountNumber(e.target.value);
+                  }}
+                />
               </Form.Group>
             </Row>
             <Row>
@@ -151,7 +163,12 @@ const Pg2DirectDeposit = () => {
                 controlId="additionalQuestion1"
               >
                 <Form.Label>Allottee Title</Form.Label>
-                <Form.Control type="text" placeholder="Account Holder's Name" />
+                <Form.Control
+                  type="text"
+                  placeholder="Account Holder's Name"
+                  value={allotteeTitle}
+                  onChange={(e) => setAllotteeTitle(e.target.value)}
+                />
               </Form.Group>
               <Form.Group
                 as={Col}
@@ -159,7 +176,12 @@ const Pg2DirectDeposit = () => {
                 controlId="additionalQuestion1"
               >
                 <Form.Label>Allottee Financial Institution</Form.Label>
-                <Form.Control type="text" placeholder="Institution Name" />
+                <Form.Control
+                  type="text"
+                  placeholder="Institution Name"
+                  value={allotteeBankName}
+                  onChange={(e) => setAllotteeBankName(e.target.value)}
+                />
               </Form.Group>
             </Row>
             <h5>

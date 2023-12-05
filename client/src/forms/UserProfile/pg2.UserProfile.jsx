@@ -21,7 +21,8 @@ const Pg2UserProfile = () => {
           setSupervisorPhone,
           todaysDate,
           setTodaysDate,
-        } = value;
+        } = value.userProfile;
+
         return (
           <Form>
             <Row>

@@ -17,7 +17,8 @@ export const FormProvider = ({ children }) => {
   const [lastName, setLastName] = useState("");
   const [middleInitial, setMiddleInitial] = useState("");
   const [dutyTitle, setDutyTitle] = useState("");
-  const [address, setAddress] = useState("");
+  const [address1, setAddress1] = useState("");
+  const [address2, setAddress2] = useState("");
   const [city, setCity] = useState("");
   const [homeState, setHomeState] = useState("");
   const [country, setCountry] = useState("");
@@ -27,34 +28,42 @@ export const FormProvider = ({ children }) => {
   const [supervisorEmail, setSupervisorEmail] = useState("");
   const [supervisorPhone, setSupervisorPhone] = useState("");
   const [todaysDate, setTodaysDate] = useState(date);
-
+  const [email, setEmail] = useState("");
+  const [cellphone, setCellPhone] = useState("");
+  const [dob, setDob] = useState("");
+  // Payroll Fields
   const [accountType, setAccountType] = useState("");
   const [paymentType, setPaymentType] = useState("");
   const [routingNumber, setRoutingNumber] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
   const [checkDigit, setCheckDigit] = useState("");
+  const [accountOwner, setAccountOwner] = useState("");
   const [bankName, setBankName] = useState("");
+
+  // Allotment Fields
   const [allotmentType, setAllotmentType] = useState("");
   const [allotmentAction, setAllotmentAction] = useState("");
-  const [allotteeTitle, setAlloteeTitle] = useState("");
-  const [allotmentNewTotal, setAllotmentNewTotal] = useState("");
   const [allotmentAmount, setAllotmentAmount] = useState("");
-  const [alloteeName, setAlloteeName] = useState("");
-  const [alloteeRoutingNumber, setAlloteeRoutingNumber] = useState("");
-  const [alloteeAccountNumber, setAlloteeAccountNumber] = useState("");
-  const [alloteeCheckDigit, setAlloteeCheckDigit] = useState("");
-  const [alloteeBankName, setAlloteeBankName] = useState("");
-  const [accountOwner, setAccountOwner] = useState(
-    lastName + " " + firstName + " " + middleInitial
-  );
+  const [allotmentNewTotal, setAllotmentNewTotal] = useState("");
+  const [allotteeName, setAllotteeName] = useState("");
+  const [allotteeRoutingNumber, setAllotteeRoutingNumber] = useState("");
+  const [allotteeAccountNumber, setAllotteeAccountNumber] = useState("");
+  const [allotteeCheckDigit, setAllotteeCheckDigit] = useState("");
+  const [allotteeTitle, setAllotteeTitle] = useState("");
+  const [allotteeBankName, setAllotteeBankName] = useState("");
+
   const userProfile = {
     firstName,
     lastName,
     middleInitial,
     dutyTitle,
-    address,
+    email,
+    cellphone,
+    address1,
+    address2,
     city,
     homeState,
+    dob,
     country,
     zipCode,
     dsn,
@@ -64,9 +73,13 @@ export const FormProvider = ({ children }) => {
     todaysDate,
     setFirstName,
     setLastName,
+    setEmail,
+    setCellPhone,
     setMiddleInitial,
+    setDob,
     setDutyTitle,
-    setAddress,
+    setAddress1,
+    setAddress2,
     setCity,
     setHomeState,
     setCountry,
@@ -90,12 +103,12 @@ export const FormProvider = ({ children }) => {
     allotmentAction,
     allotmentAmount,
     allotmentNewTotal,
-    alloteeName,
+    allotteeName,
+    allotteeRoutingNumber,
+    allotteeAccountNumber,
+    allotteeCheckDigit,
     allotteeTitle,
-    alloteeRoutingNumber,
-    alloteeAccountNumber,
-    alloteeCheckDigit,
-    alloteeBankName,
+    allotteeBankName,
     setAccountType,
     setPaymentType,
     setAccountOwner,
@@ -104,16 +117,16 @@ export const FormProvider = ({ children }) => {
     setAccountNumber,
     setCheckDigit,
     setBankName,
-    setAlloteeTitle,
     setAllotmentType,
-    setAllotmentAccountType,
-    setAllotmentNewTotal,
+    setAllotmentAction,
     setAllotmentAmount,
-    setAlloteeName,
-    setAlloteeRoutingNumber,
-    setAlloteeAccountNumber,
-    setAlloteeCheckDigit,
-    setAlloteeBankName,
+    setAllotmentNewTotal,
+    setAllotteeName,
+    setAllotteeRoutingNumber,
+    setAllotteeAccountNumber,
+    setAllotteeCheckDigit,
+    setAllotteeTitle,
+    setAllotteeBankName,
   };
 
   return (
