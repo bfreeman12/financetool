@@ -93,6 +93,7 @@ const Pg1UserProfile = () => {
                 <Form.Label>Date of Birth</Form.Label>
                 <Form.Control
                   value={dob}
+                  max={new Date().toJSON().slice(0, 10)}
                   type="date"
                   onChange={(e) => setDob(e.target.value)}
                 />

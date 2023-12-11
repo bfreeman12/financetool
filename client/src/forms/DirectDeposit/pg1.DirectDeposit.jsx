@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import Badge from "react-bootstrap/Badge";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { FormContext } from "../../formcontext/form.context";
@@ -32,6 +33,13 @@ const Pg1DirectDeposit = () => {
           setAccountTitle,
         } = value.payrollFields;
 
+        const handleRoutingNumber = (e) => {
+          setRoutingNumber(e.target.value);
+          if (e.target.value.length === 9) {
+            setCheckDigit(e.target.value[8]);
+          }
+        };
+
         return (
           <Form>
             <Row className="">
@@ -60,29 +68,24 @@ const Pg1DirectDeposit = () => {
                   type="text"
                   placeholder="Enter Routing Number"
                   value={routingNumber}
-                  onChange={(e) => setRoutingNumber(e.target.value)}
+                  onChange={handleRoutingNumber}
+                  maxLength={9}
                 />
+
+                <Badge
+                  bg={`${routingNumber.length > 9 ? "danger" : "primary"}`}
+                >
+                  {routingNumber.length}/{9}
+                </Badge>
               </Form.Group>
               <Form.Group as={Col} className="mb-3" controlId="accountNumber">
                 <Form.Label>Account Number</Form.Label>
                 <Form.Control
                   type="text"
+                  maxLength={17}
                   placeholder="Enter Account Number"
                   value={accountNumber}
                   onChange={(e) => setAccountNumber(e.target.value)}
-                />
-              </Form.Group>
-              <Form.Group
-                as={Col}
-                className="mb-3"
-                controlId="accountCheckDigit"
-              >
-                <Form.Label>Check Digit</Form.Label>
-                <Form.Control
-                  type="text"
-                  placeholder="Enter Check Digit"
-                  value={checkDigit}
-                  onChange={(e) => setCheckDigit(e.target.value)}
                 />
               </Form.Group>
             </Row>
@@ -94,9 +97,9 @@ const Pg1DirectDeposit = () => {
                   name="payment-type"
                   label="Net Pay"
                   id="net-pay"
-                  value="Net Pay"
-                  checked={paymentType === "Net Pay"}
-                  onChange={() => setPaymentType("Net Pay")}
+                  value="Savings"
+                  checked={paymentType === "Savings"}
+                  onChange={() => setPaymentType("Savings")}
                 />
                 <Form.Check
                   type="radio"
@@ -112,9 +115,9 @@ const Pg1DirectDeposit = () => {
                   name="payment-type"
                   label="Other Federal Payments"
                   id="other-payments"
-                  value="Other Federal Payments"
-                  checked={paymentType === "Other Federal Payments"}
-                  onChange={() => setPaymentType("Other Federal Payments")}
+                  value="Other"
+                  checked={paymentType === "Other"}
+                  onChange={() => setPaymentType("Other")}
                 />
               </Form.Group>
 
