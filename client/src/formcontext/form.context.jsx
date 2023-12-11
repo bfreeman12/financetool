@@ -43,6 +43,7 @@ export const FormProvider = ({ children }) => {
 
   // Allotment Fields
   const [allotmentType, setAllotmentType] = useState("");
+  const [allotteeAccountType, setAllotteeAccountType] = useState("");
   const [allotmentAction, setAllotmentAction] = useState("");
   const [allotmentAmount, setAllotmentAmount] = useState("");
   const [allotmentNewTotal, setAllotmentNewTotal] = useState("");
@@ -107,6 +108,7 @@ export const FormProvider = ({ children }) => {
     allotmentAmount,
     allotmentNewTotal,
     allotteeName,
+    allotteeAccountType,
     allotteeRoutingNumber,
     allotteeAccountNumber,
     allotteeCheckDigit,
@@ -116,6 +118,7 @@ export const FormProvider = ({ children }) => {
     setPaymentType,
     setAccountTitle,
     setAllotmentAction,
+    setAllotteeAccountType,
     setRoutingNumber,
     setAccountNumber,
     setCheckDigit,

@@ -3,6 +3,8 @@ import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { FormContext } from "../../formcontext/form.context";
+import Badge from "react-bootstrap/Badge";
+
 const Pg2DirectDeposit = () => {
   return (
     <FormContext.Consumer>
@@ -15,7 +17,7 @@ const Pg2DirectDeposit = () => {
           allotteeName,
           allotteeRoutingNumber,
           allotteeAccountNumber,
-          allotteeCheckDigit,
+          allotteeAccountType,
           allotteeTitle,
           allotteeBankName,
           setAllotmentType,
@@ -23,6 +25,7 @@ const Pg2DirectDeposit = () => {
           setAllotmentAmount,
           setAllotmentNewTotal,
           setAllotteeName,
+          setAllotteeAccountType,
           setAllotteeRoutingNumber,
           setAllotteeAccountNumber,
           setAllotteeCheckDigit,
@@ -62,6 +65,31 @@ const Pg2DirectDeposit = () => {
                   onChange={() => setAllotmentType("Discretionary")}
                 />
               </Form.Group>
+              <Form.Group
+                as={Col}
+                className="mb-3"
+                controlId="allotteeAccountType"
+              >
+                <Form.Label>Account Type</Form.Label>
+                <Form.Check
+                  type="radio"
+                  name="allotment-account-type"
+                  id="allotment-checkings"
+                  label="Checking"
+                  value="Checking"
+                  checked={allotteeAccountType === "Checking"}
+                  onChange={() => setAllotteeAccountType("Checking")}
+                />
+                <Form.Check
+                  type="radio"
+                  name="allotment-account-type"
+                  id="allotment-savings"
+                  label="Savings"
+                  value="Savings"
+                  checked={allotteeAccountType === "Savings"}
+                  onChange={() => setAllotteeAccountType("Savings")}
+                />
+              </Form.Group>
               <Form.Group as={Col} className="mb-3" controlId="allotmentAction">
                 <Form.Label>Action</Form.Label>
                 <Form.Check
@@ -78,9 +106,9 @@ const Pg2DirectDeposit = () => {
                   name="allotment-action"
                   id="allotment-stop"
                   label="Stop"
-                  value="Stop"
-                  checked={allotmentAction === "Stop"}
-                  onChange={() => setAllotmentAction("Stop")}
+                  value="Cancel"
+                  checked={allotmentAction === "Cancel"}
+                  onChange={() => setAllotmentAction("Cancel")}
                 />
                 <Form.Check
                   type="radio"
@@ -99,18 +127,18 @@ const Pg2DirectDeposit = () => {
                   name="allotment-amount"
                   id="allotment-increase"
                   label="Increase To"
-                  value="Increase"
-                  checked={allotmentAmount === "Increase"}
-                  onChange={() => setAllotmentAmount("Increase")}
+                  value="Increase to"
+                  checked={allotmentAmount === "Increase to"}
+                  onChange={() => setAllotmentAmount("Increase to")}
                 />
                 <Form.Check
                   type="radio"
                   name="allotment-amount"
                   id="allotment-decrease"
                   label="Decrease To"
-                  value="Decrease"
-                  checked={allotmentAmount === "Decrease"}
-                  onChange={() => setAllotmentAmount("Decrease")}
+                  value="Decrease to"
+                  checked={allotmentAmount === "Decrease to"}
+                  onChange={() => setAllotmentAmount("Decrease to")}
                 />
                 <Form.Label>New Total</Form.Label>
                 <Form.Control
@@ -148,6 +176,13 @@ const Pg2DirectDeposit = () => {
                   onChange={handleAllotteeRoutingNumber}
                   maxLength={9}
                 />
+                <Badge
+                  bg={`${
+                    allotteeRoutingNumber.length > 9 ? "danger" : "primary"
+                  }`}
+                >
+                  {allotteeRoutingNumber.length}/{9}
+                </Badge>
               </Form.Group>
               <Form.Group
                 as={Col}

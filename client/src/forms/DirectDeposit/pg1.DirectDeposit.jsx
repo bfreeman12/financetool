@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Badge from "react-bootstrap/Badge";
 import Col from "react-bootstrap/Col";
@@ -7,12 +6,6 @@ import Row from "react-bootstrap/Row";
 import { FormContext } from "../../formcontext/form.context";
 
 const Pg1DirectDeposit = () => {
-  const [paymentType, setPaymentType] = useState("");
-
-  const handlePaymentTypeChange = (e) => {
-    setPaymentType(e.target.value);
-  };
-
   return (
     <FormContext.Consumer>
       {(value) => {
