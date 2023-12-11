@@ -100,7 +100,7 @@ const Pg2UserProfile = () => {
                   onChange={(e) => setSupervisorPhone(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group className="w-50">
+              <Form.Group className="w-25">
                 <Form.Label>Today's Date</Form.Label>
                 <Form.Control
                   type="date"

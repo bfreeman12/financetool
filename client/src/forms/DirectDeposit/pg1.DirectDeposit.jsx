@@ -140,7 +140,6 @@ const Pg1DirectDeposit = () => {
                   placeholder="Bank Name"
                 />
               </Form.Group>
-              <Form.Group as={Col}></Form.Group>
             </Row>
           </Form>
         );
