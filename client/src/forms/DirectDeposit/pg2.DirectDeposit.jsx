@@ -29,6 +29,14 @@ const Pg2DirectDeposit = () => {
           setAllotteeTitle,
           setAllotteeBankName,
         } = value.payrollFields;
+
+        const handleAllotteeRoutingNumber = (e) => {
+          setAllotteeRoutingNumber(e.target.value);
+          if (e.target.value.length === 9) {
+            setAllotteeCheckDigit(e.target.value[8]);
+          }
+        };
+
         return (
           <>
             <h3 style={{ textDecoration: "underline" }}>Allotments</h3>
@@ -137,7 +145,8 @@ const Pg2DirectDeposit = () => {
                   type="text"
                   placeholder="Routing Number"
                   value={allotteeRoutingNumber}
-                  onChange={(e) => setAllotteeRoutingNumber(e.target.value)}
+                  onChange={handleAllotteeRoutingNumber}
+                  maxLength={9}
                 />
               </Form.Group>
               <Form.Group

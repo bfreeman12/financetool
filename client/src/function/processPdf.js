@@ -5,6 +5,7 @@ export const fillDirectDepositForm = async (formUrl, pdf) => {
     ignoreEncryption: true,
   });
   const form = pdfDoc.getForm();
+
   const formFieldsToSet = {
     "Home Phone": pdf.userProfile.cellphone,
     "Acct Type": pdf.payrollFields.accountType,
@@ -17,7 +18,11 @@ export const fillDirectDepositForm = async (formUrl, pdf) => {
     "Allottment Amount New Total": pdf.payrollFields.allotmentNewTotal,
     "Allottee Name": pdf.payrollFields.allotteeName,
     "Routing Number": pdf.payrollFields.routingNumber.slice(0, 8),
-    "Allottee Routing Number": pdf.payrollFields.allotteeRoutingNumber,
+    "Allottee Routing Number": pdf.payrollFields.allotteeRoutingNumber.slice(
+      0,
+      8
+    ),
+    "Allottee Check Digit": pdf.payrollFields.allotteeCheckDigit,
     "Check Digit": pdf.payrollFields.checkDigit,
     "Allottee Check Digit": pdf.payrollFields.allotteeCheckDigit,
     "Acct Number": pdf.payrollFields.accountNumber,
