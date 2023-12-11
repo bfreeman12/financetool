@@ -118,7 +118,6 @@ export const FormProvider = ({ children }) => {
     setCheckDigit,
     setBankName,
     setAllotmentType,
-    setAllotmentAction,
     setAllotmentAmount,
     setAllotmentNewTotal,
     setAllotteeName,
