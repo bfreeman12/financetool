@@ -186,7 +186,7 @@ const Pg2DirectDeposit = () => {
             </Row>
             <h5>
               If you would <strong>not</strong> like to alter your allotment
-              please click select/submit
+              please click Next/Submit
             </h5>
           </>
         );

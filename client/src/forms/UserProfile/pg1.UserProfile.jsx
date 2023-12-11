@@ -46,7 +46,7 @@ const Pg1UserProfile = () => {
                 <Form.Control
                   value={lastName}
                   type="Text"
-                  placeholder="Enter email"
+                  placeholder="Last Name"
                   onChange={(e) => setLastName(e.target.value)}
                 />
               </Form.Group>
@@ -75,7 +75,7 @@ const Pg1UserProfile = () => {
                 <Form.Control
                   value={email}
                   type="email"
-                  placeholder="Enter email"
+                  placeholder="Official Email"
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </Form.Group>
@@ -84,6 +84,7 @@ const Pg1UserProfile = () => {
                 <Form.Control
                   value={cellPhone}
                   type="tel"
+                  autoComplete="tel"
                   placeholder="xxx-xxx-xxxx"
                   onChange={(e) => setCellPhone(e.target.value)}
                 />
@@ -103,7 +104,7 @@ const Pg1UserProfile = () => {
                 className="mb-3"
                 controlId="formUserAddress1"
               >
-                <Form.Label>Address 1</Form.Label>
+                <Form.Label>Street</Form.Label>
                 <Form.Control
                   value={address1}
                   autoComplete="address-line1"
@@ -118,12 +119,12 @@ const Pg1UserProfile = () => {
                 className="mb-3"
                 controlId="formUserAddress2"
               >
-                <Form.Label>Address 2</Form.Label>
+                <Form.Label>Unit / Apt / Suite</Form.Label>
                 <Form.Control
                   value={address2}
                   autoComplete="address-line2"
                   type="text"
-                  placeholder="Enter your address"
+                  placeholder="Enter your unit/apt/suite"
                   onChange={(e) => setAddress2(e.target.value)}
                 />
               </Form.Group>
@@ -146,7 +147,7 @@ const Pg1UserProfile = () => {
                   value={homeState}
                   autoComplete="address-level1"
                   type="text"
-                  placeholder="Enter your State/Province/Region"
+                  placeholder="State/Province/Region"
                   onChange={(e) => setHomeState(e.target.value)}
                 />
               </Form.Group>

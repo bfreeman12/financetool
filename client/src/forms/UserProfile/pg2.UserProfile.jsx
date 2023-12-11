@@ -16,6 +16,8 @@ const Pg2UserProfile = () => {
           supervisorName,
           setSupervisorName,
           supervisorEmail,
+          ssn,
+          setSsn,
           setSupervisorEmail,
           supervisorPhone,
           setSupervisorPhone,
@@ -41,7 +43,12 @@ const Pg2UserProfile = () => {
               </Form.Group>
               <Form.Group as={Col} controlId="formUserSocial">
                 <Form.Label>SSN</Form.Label>
-                <Form.Control type="password" placeholder="***-**-****" />
+                <Form.Control
+                  type="password"
+                  placeholder="***-**-****"
+                  value={ssn}
+                  onChange={(e) => setSsn(e.target.value)}
+                />
               </Form.Group>
               <Form.Group
                 as={Col}

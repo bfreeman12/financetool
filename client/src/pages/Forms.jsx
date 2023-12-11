@@ -7,6 +7,7 @@ import Queue from "../components/Queue";
 const Forms = () => {
   let { state } = useLocation();
   const [data, setData] = useState(state.data); // all pdfs that are in the queue
+
   return (
     <>
       <Navbar />

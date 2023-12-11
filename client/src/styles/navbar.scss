@@ -10,24 +10,35 @@
     user-select: none;
     color: rgb(62, 213, 112);
   }
-  button {
+  .link {
+    text-decoration: none;
+    color: white;
+    padding-right: 2rem;
     user-select: none;
-    all: unset;
-    .icon {
-      padding-right: 2rem;
-
-      color: white;
-      font-size: x-large;
-    }
-    .icon:hover {
+    &:hover {
       color: rgba(255, 255, 255, 0.801);
     }
-    .icon:active {
-      scale: 1.1;
+    &:active {
       color: rgba(255, 255, 255, 0.545);
     }
-  }
+    button {
+      user-select: none;
+      all: unset;
+      .icon {
+        padding-right: 2rem;
 
+        color: white;
+        font-size: x-large;
+      }
+      .icon:hover {
+        color: rgba(255, 255, 255, 0.801);
+      }
+      .icon:active {
+        scale: 1.1;
+        color: rgba(255, 255, 255, 0.545);
+      }
+    }
+  }
   button:hover {
     cursor: pointer;
   }
