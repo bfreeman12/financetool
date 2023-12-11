@@ -34,8 +34,8 @@ const Pg1DirectDeposit = () => {
 
         return (
           <Form>
-            <Row>
-              <Form.Group as={Col} className="mb-3" controlId="accountType">
+            <Row className="">
+              <Form.Group as={Col} className="mb-5" controlId="accountType">
                 <Form.Label>Account Type</Form.Label>
                 <Form.Check
                   type="radio"
@@ -86,7 +86,7 @@ const Pg1DirectDeposit = () => {
                 />
               </Form.Group>
             </Row>
-            <Row>
+            <Row className="payment-type-row">
               <Form.Group as={Col} className="mb-3" controlId="paymentType">
                 <Form.Label>Type of Payment</Form.Label>
                 <Form.Check
@@ -117,6 +117,7 @@ const Pg1DirectDeposit = () => {
                   onChange={() => setPaymentType("Other Federal Payments")}
                 />
               </Form.Group>
+
               <Form.Group as={Col} className="mb-3" controlId="accountTitle">
                 <Form.Label>Account Title</Form.Label>
                 <Form.Control
@@ -126,6 +127,7 @@ const Pg1DirectDeposit = () => {
                   placeholder="Account Owner's Name"
                 />
               </Form.Group>
+
               <Form.Group as={Col} className="mb-3" controlId="accountTitle">
                 <Form.Label>Financial Institution</Form.Label>
                 <Form.Control
@@ -135,6 +137,7 @@ const Pg1DirectDeposit = () => {
                   placeholder="Bank Name"
                 />
               </Form.Group>
+              <Form.Group as={Col}></Form.Group>
             </Row>
           </Form>
         );
