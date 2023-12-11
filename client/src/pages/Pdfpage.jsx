@@ -6,15 +6,16 @@ import fetchPdf from "../function/apifetch";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleDown } from "@fortawesome/free-solid-svg-icons";
 
-const pdfList = [
-  "2231 Direct Deposit Form",
-  "DAF 594",
-  "DD 1351-2c",
-  "DD Form 1561",
-  "DD Form 2560 Pay Advance",
-  "Lost Reciept Form",
-  "State of Legal Residence - DD Form 2058",
-];
+const pdfList = {
+  "2231 Direct Deposit Form": "2231 Direct Deposit Form.pdf",
+  "DAF 594": "daf594.pdf",
+  "DD 1351-2c": "DD 1351-2c.pdf",
+  "DD Form 1561": "DD Form 1561.pdf",
+  "DD Form 2560 Pay Advance": "DD FORM 2560 pay advance.pdf",
+  "Lost Reciept Form": "Lost Receipt Form.pdf",
+  "State of Legal Residence - DD Form 2058":
+    "State of Legal Residence - DD Form 2058.pdf",
+};
 
 const PdfPage = () => {
   const [selectedPdfs, setSelectedPdfs] = useState([]);
@@ -28,18 +29,18 @@ const PdfPage = () => {
   };
 
   const RenderPdf = () => {
-    return pdfList.map((pdf) => (
-      <li key={pdf} className="pdf-item">
+    return Object.entries(pdfList).map(([key, value]) => (
+      <li key={value} className="pdf-item">
         <input
           type="checkbox"
-          id={pdf}
-          checked={selectedPdfs.includes(pdf)}
-          onChange={() => handleCheckboxChange(pdf)}
+          id={value}
+          checked={selectedPdfs.includes(value)}
+          onChange={() => handleCheckboxChange(value)}
         />
-        <label className="pdf-label" htmlFor={pdf}>
-          {pdf}
+        <label className="pdf-label" htmlFor={value}>
+          {key}
         </label>
-        <button className="pdf-button" onClick={() => fetchPdf(pdf)}>
+        <button className="pdf-button" onClick={() => fetchPdf(value)}>
           <FontAwesomeIcon className="fa-icon" icon={faCircleDown} />
         </button>
       </li>
@@ -50,10 +51,12 @@ const PdfPage = () => {
       <Navbar />
       <div className="content">
         <ul className="pdf-body">
-          {pdfList.length > 0 ? <RenderPdf /> : "no pdfs found"}
+          {Object.keys(pdfList).length > 0 ? <RenderPdf /> : "No PDFs Found"}
         </ul>
         <div className="button-group">
-          <button onClick={() => setSelectedPdfs(pdfList)}>Select All</button>
+          <button onClick={() => setSelectedPdfs(Object.values(pdfList))}>
+            Select All
+          </button>
           <button onClick={() => setSelectedPdfs([])}>Clear All</button>
 
           {selectedPdfs.length > 0 ? (
@@ -67,6 +70,7 @@ const PdfPage = () => {
       </div>
     </>
   );
+  z;
 };
 
 export default PdfPage;

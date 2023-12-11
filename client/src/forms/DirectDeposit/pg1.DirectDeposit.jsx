@@ -22,14 +22,14 @@ const Pg1DirectDeposit = () => {
           accountNumber,
           checkDigit,
           bankName,
-          accountOwner,
+          accountTitle,
           setAccountType,
           setPaymentType,
           setRoutingNumber,
           setAccountNumber,
           setCheckDigit,
           setBankName,
-          setAccountOwner,
+          setAccountTitle,
         } = value.payrollFields;
 
         return (
@@ -117,16 +117,16 @@ const Pg1DirectDeposit = () => {
                   onChange={() => setPaymentType("Other Federal Payments")}
                 />
               </Form.Group>
-              <Form.Group as={Col} className="mb-3" controlId="accountOwner">
+              <Form.Group as={Col} className="mb-3" controlId="accountTitle">
                 <Form.Label>Account Title</Form.Label>
                 <Form.Control
-                  value={accountOwner}
-                  onChange={(e) => setAccountOwner(e.target.value)}
+                  value={accountTitle}
+                  onChange={(e) => setAccountTitle(e.target.value)}
                   type="text"
                   placeholder="Account Owner's Name"
                 />
               </Form.Group>
-              <Form.Group as={Col} className="mb-3" controlId="accountOwner">
+              <Form.Group as={Col} className="mb-3" controlId="accountTitle">
                 <Form.Label>Financial Institution</Form.Label>
                 <Form.Control
                   value={bankName}

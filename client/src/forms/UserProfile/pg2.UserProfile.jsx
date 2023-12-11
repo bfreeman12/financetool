@@ -11,8 +11,8 @@ const Pg2UserProfile = () => {
         const {
           dutyTitle,
           setDutyTitle,
-          dsn,
-          setDsn,
+          workPhone,
+          setWorkPhone,
           supervisorName,
           setSupervisorName,
           supervisorEmail,
@@ -26,13 +26,17 @@ const Pg2UserProfile = () => {
         return (
           <Form>
             <Row>
-              <Form.Group as={Col} className="mb-3" controlId="formUserDSN">
-                <Form.Label>DSN</Form.Label>
+              <Form.Group
+                as={Col}
+                className="mb-3"
+                controlId="formUserWorkPhone"
+              >
+                <Form.Label>Work Phone</Form.Label>
                 <Form.Control
-                  value={dsn}
+                  value={workPhone}
                   type="tel"
                   placeholder="xxx-xxxx"
-                  onChange={(e) => setDsn(e.target.value)}
+                  onChange={(e) => setWorkPhone(e.target.value)}
                 />
               </Form.Group>
               <Form.Group as={Col} controlId="formUserSocial">

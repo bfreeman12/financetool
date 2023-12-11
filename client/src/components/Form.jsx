@@ -5,6 +5,7 @@ import Pg2UserProfile from "../forms/UserProfile/pg2.UserProfile";
 import Pg1DirectDeposit from "../forms/DirectDeposit/pg1.DirectDeposit";
 import Pg2DirectDeposit from "../forms/DirectDeposit/pg2.DirectDeposit";
 import { FormContext } from "../formcontext/form.context";
+import { fillPdfTemplate, downloadPdf } from "../function/processPdf";
 import "../styles/form.css";
 
 const Form = ({ queue, profile }) => {
@@ -18,7 +19,6 @@ const Form = ({ queue, profile }) => {
     <Pg1DirectDeposit />,
     <Pg2DirectDeposit />,
   ];
-  // const pages = [<Pg1DirectDeposit />];
 
   const handleNext = () => {
     if (currentPage < pages.length - 1) {
@@ -28,7 +28,7 @@ const Form = ({ queue, profile }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(context);
+    fillPdfTemplate(context);
   };
 
   return (

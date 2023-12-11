@@ -23,7 +23,7 @@ export const FormProvider = ({ children }) => {
   const [homeState, setHomeState] = useState("");
   const [country, setCountry] = useState("");
   const [zipCode, setZipCode] = useState("");
-  const [dsn, setDsn] = useState("");
+  const [workPhone, setWorkPhone] = useState("");
   const [supervisorName, setSupervisorName] = useState("");
   const [supervisorEmail, setSupervisorEmail] = useState("");
   const [supervisorPhone, setSupervisorPhone] = useState("");
@@ -37,7 +37,7 @@ export const FormProvider = ({ children }) => {
   const [routingNumber, setRoutingNumber] = useState("");
   const [accountNumber, setAccountNumber] = useState("");
   const [checkDigit, setCheckDigit] = useState("");
-  const [accountOwner, setAccountOwner] = useState("");
+  const [accountTitle, setAccountTitle] = useState("");
   const [bankName, setBankName] = useState("");
 
   // Allotment Fields
@@ -66,7 +66,7 @@ export const FormProvider = ({ children }) => {
     dob,
     country,
     zipCode,
-    dsn,
+    workPhone,
     supervisorName,
     supervisorEmail,
     supervisorPhone,
@@ -84,7 +84,7 @@ export const FormProvider = ({ children }) => {
     setHomeState,
     setCountry,
     setZipCode,
-    setDsn,
+    setWorkPhone,
     setSupervisorName,
     setSupervisorEmail,
     setSupervisorPhone,
@@ -93,7 +93,7 @@ export const FormProvider = ({ children }) => {
 
   const payrollFields = {
     accountType,
-    accountOwner,
+    accountTitle,
     paymentType,
     routingNumber,
     accountNumber,
@@ -111,7 +111,7 @@ export const FormProvider = ({ children }) => {
     allotteeBankName,
     setAccountType,
     setPaymentType,
-    setAccountOwner,
+    setAccountTitle,
     setAllotmentAction,
     setRoutingNumber,
     setAccountNumber,
