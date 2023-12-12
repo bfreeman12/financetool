@@ -8,7 +8,7 @@ function Navbar() {
 
   return (
     <div className="navbar">
-      <h1>Finance PDF filler outter</h1>
+      <h1>Finance PDF Filler</h1>
       {window.location.pathname.includes("/forms") && (
         <Link className="link" to="/" onClick={confirmExit}>
           <button>Quit</button>
