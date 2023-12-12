@@ -44,10 +44,12 @@ const Pg2UserProfile = () => {
               <Form.Group as={Col} controlId="formUserSocial">
                 <Form.Label>SSN</Form.Label>
                 <Form.Control
-                  type="password"
+                  type="number"
                   placeholder="***-**-****"
                   value={ssn}
+                  pattern="\d{3}-?\d{2}-?\d{4}"
                   onChange={(e) => setSsn(e.target.value)}
+                  autoComplete="off"
                 />
               </Form.Group>
               <Form.Group

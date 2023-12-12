@@ -37,7 +37,7 @@ const Pg1UserProfile = () => {
         } = value.userProfile;
 
         return (
-          <Form>
+          <Form autoComplete="off">
             <h5>User Profile Information</h5>
 
             <Row className="mb-3">
