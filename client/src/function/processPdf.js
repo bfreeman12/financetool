@@ -66,7 +66,11 @@ export const fillDirectDepositForm = async (formUrl, pdf) => {
 
   const link = document.createElement("a");
   link.href = new_url;
-  link.download = formUrl.split("/").pop();
+  link.download =
+    formUrl.split("/").pop().split(".")[0] +
+    " (" +
+    pdf.userProfile.lastName +
+    ").pdf";
   link.click();
   return pdfBytes;
 };
