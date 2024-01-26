@@ -1,14 +1,52 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import { FormContext } from "../../formcontext/form.context";
 import Button from "react-bootstrap/Button";
 
-const Pg1PayAdvance = () => {
-  const { advancePayFields } = useContext(FormContext);
-  const { lodgingInfo, setLodgingInfo, airfareInfo, setAirfareInfo } =
-    advancePayFields;
+const Pg1LostReciept = () => {
+  const { lostRecieptFields } = useContext(FormContext);
+  const { lodgingInfo, setLodgingInfo } = lostRecieptFields;
+
+  const handleInputChange = (e, index) => {
+    const { name, value, type, checked } = e.target;
+    const list = [...lodgingInfo];
+    list[index][name] = type === "checkbox" ? checked : value;
+    setLodgingInfo(list);
+  };
+
+  useEffect(() => {
+    setLodgingInfo(lodgingInfo);
+  }, [lodgingInfo]);
+
+  const addLodging = () => {
+    if (lodgingInfo.length < 2) {
+      setLodgingInfo([
+        ...lodgingInfo,
+        {
+          hotelName: "",
+          hotelCity: "",
+          hotelState: "",
+          wasShared: false,
+          wasOnOrders: false,
+          checkInDate: "",
+          checkOutDate: "",
+          dailyRoomRate: 0,
+          dailyTax: 0,
+          totalCost: 0,
+        },
+      ]);
+    } else {
+      alert("You can only add a maximum of two lodgings.");
+    }
+  };
+
+  const removeLodging = (index) => {
+    const list = [...lodgingInfo];
+    list.splice(index, 1);
+    setLodgingInfo(list);
+  };
 
   return (
     <>
@@ -24,109 +62,122 @@ const Pg1PayAdvance = () => {
         Billed Government Travel Card. d. Expenses incurred while on leave or
         other non-per-diem status.
       </p>
+
       <Form>
-        <Form.Group controlId="hotelName1">
-          <Form.Label>Hotel Name</Form.Label>
-          <Form.Control
-            type="text"
-            name="hotelName"
-            value={lodgingInfo[0]?.hotelName}
-            onChange={(event) => handleLodgingChange1(event)}
-          />
-        </Form.Group>
+        {lodgingInfo.map((lodging, index) => (
+          <div key={index}>
+            <h5>Lodging {index + 1}</h5>
+            <Row className="md-5">
+              <Form.Group as={Col} controlId={`hotelName${index}`}>
+                <Form.Label>Hotel Name</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="hotelName"
+                  value={lodging.hotelName}
+                  onChange={(e) => handleInputChange(e, index)}
+                />
+              </Form.Group>
 
-        <Form.Group controlId="hotelCity1">
-          <Form.Label>City</Form.Label>
-          <Form.Control
-            type="text"
-            name="hotelCity"
-            value={lodgingInfo[0]?.hotelCity}
-            onChange={(event) => handleLodgingChange1(event)}
-          />
-        </Form.Group>
+              <Form.Group as={Col} controlId={`hotelCity${index}`}>
+                <Form.Label>City</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="hotelCity"
+                  value={lodging.hotelCity}
+                  onChange={(e) => handleInputChange(e, index)}
+                />
+              </Form.Group>
 
-        <Form.Group controlId="hotelState1">
-          <Form.Label>State/Country</Form.Label>
-          <Form.Control
-            type="text"
-            name="hotelState"
-            value={lodgingInfo[0]?.hotelState}
-            onChange={(event) => handleLodgingChange1(event)}
-          />
-        </Form.Group>
+              <Form.Group as={Col} controlId={`hotelState${index}`}>
+                <Form.Label>State/Country</Form.Label>
+                <Form.Control
+                  type="text"
+                  name="hotelState"
+                  value={lodging.hotelState}
+                  onChange={(e) => handleInputChange(e, index)}
+                />
+              </Form.Group>
 
-        <Form.Group controlId="shared1">
-          <Form.Label>Was Shared?</Form.Label>
-          <Form.Check
-            type="checkbox"
-            name="wasShared"
-            checked={lodgingInfo[0]?.wasShared}
-            onChange={(event) => handleLodgingChange1(event)}
-          />
-        </Form.Group>
+              <Form.Group as={Col} controlId={`shared${index}`}>
+                <Form.Label>Was Shared?</Form.Label>
+                <Form.Check
+                  type="checkbox"
+                  name="wasShared"
+                  checked={lodging.wasShared}
+                  onChange={(e) => handleInputChange(e, index)}
+                />
+              </Form.Group>
 
-        <Form.Group controlId="onOrders1">
-          <Form.Label>If Shared, Was On Orders?</Form.Label>
-          <Form.Check
-            type="checkbox"
-            name="wasOnOrders"
-            checked={lodgingInfo[0]?.wasOnOrders}
-            onChange={(event) => handleLodgingChange1(event)}
-          />
-        </Form.Group>
+              <Form.Group as={Col} controlId={`onOrders${index}`}>
+                <Form.Label>If Shared, Was On Orders?</Form.Label>
+                <Form.Check
+                  type="checkbox"
+                  name="wasOnOrders"
+                  checked={lodging.wasOnOrders}
+                  onChange={(e) => handleInputChange(e, index)}
+                />
+              </Form.Group>
 
-        <Form.Group controlId="checkInDate1">
-          <Form.Label>Check In Date</Form.Label>
-          <Form.Control
-            type="date"
-            name="checkInDate"
-            value={lodgingInfo[0]?.checkInDate}
-            onChange={(event) => handleLodgingChange1(event)}
-          />
-        </Form.Group>
+              <Form.Group as={Col} controlId={`checkInDate${index}`}>
+                <Form.Label>Check In Date</Form.Label>
+                <Form.Control
+                  type="date"
+                  name="checkInDate"
+                  value={lodging.checkInDate}
+                  onChange={(e) => handleInputChange(e, index)}
+                />
+              </Form.Group>
+            </Row>
+            <Row className="md-3">
+              <Form.Group as={Col} controlId={`checkOutDate${index}`}>
+                <Form.Label>Check Out Date</Form.Label>
+                <Form.Control
+                  type="date"
+                  name="checkOutDate"
+                  value={lodging.checkOutDate}
+                  onChange={(e) => handleInputChange(e, index)}
+                />
+              </Form.Group>
 
-        <Form.Group controlId="checkOutDate1">
-          <Form.Label>Check Out Date</Form.Label>
-          <Form.Control
-            type="date"
-            name="checkOutDate"
-            value={lodgingInfo[0]?.checkOutDate}
-            onChange={(event) => handleLodgingChange1(event)}
-          />
-        </Form.Group>
+              <Form.Group as={Col} controlId={`dailyRoomRate${index}`}>
+                <Form.Label>Daily Room Rate</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="dailyRoomRate"
+                  value={lodging.dailyRoomRate}
+                  onChange={(e) => handleInputChange(e, index)}
+                />
+              </Form.Group>
 
-        <Form.Group controlId="dailyRoomRate1">
-          <Form.Label>Daily Room Rate</Form.Label>
-          <Form.Control
-            type="number"
-            name="dailyRoomRate"
-            value={lodgingInfo[0]?.dailyRoomRate}
-            onChange={(event) => handleLodgingChange1(event)}
-          />
-        </Form.Group>
+              <Form.Group as={Col} controlId={`dailyTax${index}`}>
+                <Form.Label>Daily Tax</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="dailyTax"
+                  value={lodging.dailyTax}
+                  onChange={(e) => handleInputChange(e, index)}
+                />
+              </Form.Group>
 
-        <Form.Group controlId="dailyTax1">
-          <Form.Label>Daily Tax</Form.Label>
-          <Form.Control
-            type="number"
-            name="dailyTax"
-            value={lodgingInfo[0]?.dailyTax}
-            onChange={(event) => handleLodgingChange1(event)}
-          />
-        </Form.Group>
-
-        <Form.Group controlId="totalCost1">
-          <Form.Label>Total Cost</Form.Label>
-          <Form.Control
-            type="number"
-            name="totalCost"
-            value={lodgingInfo[0]?.totalCost}
-            onChange={(event) => handleLodgingChange1(event)}
-          />
-        </Form.Group>
+              <Form.Group as={Col} controlId={`totalCost${index}`}>
+                <Form.Label>Total Cost</Form.Label>
+                <Form.Control
+                  type="number"
+                  name="totalCost"
+                  value={lodging.totalCost}
+                  onChange={(e) => handleInputChange(e, index)}
+                />
+                <Button onClick={() => removeLodging(index)}>
+                  Remove Lodging
+                </Button>
+              </Form.Group>
+            </Row>
+          </div>
+        ))}
+        <Button onClick={addLodging}>Add Lodging</Button>
       </Form>
     </>
   );
 };
 
-export default Pg1PayAdvance;
+export default Pg1LostReciept;

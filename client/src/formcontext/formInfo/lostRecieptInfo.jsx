@@ -9,8 +9,6 @@ export const useLostRecieptInfo = () => {
   // airfare
   const [airfareInfo, setAirfareInfo] = useState([]);
 
-  //second airfare
-
   //rental car
   const [carRentalCompanyName, setcarRentalCompanyName] = useState("");
   const [dateRentalRented, setDateRentalRented] = useState("");

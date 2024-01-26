@@ -15,3 +15,4 @@ export { default as Pg1PayAdvance } from "../forms/PayAdvance/pg1.PayAdvance";
 export { default as Pg2PayAdvance } from "../forms/PayAdvance/pg2.PayAdvance";
 export { default as Pg1LostReciept } from "../forms/LostReciept/pg1.LostReciept";
 export { default as Pg2LostReciept } from "../forms/LostReciept/pg2.LostReciept";
+export { default as Pg3LostReciept } from "../forms/LostReciept/pg3.LostReciept";
