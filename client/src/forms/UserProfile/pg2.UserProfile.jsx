@@ -12,12 +12,22 @@ const Pg2UserProfile = () => {
           dutyTitle,
           setDutyTitle,
           workPhone,
+          userBranch,
+          setUserBranch,
           setWorkPhone,
           supervisorName,
           setSupervisorName,
           supervisorEmail,
           ssn,
+          userServiceType,
+          setUserServiceType,
+          userRank,
+          setUserRank,
+          userGrade,
+          setUserGrade,
           setSsn,
+          dodId,
+          setDodId,
           setSupervisorEmail,
           supervisorPhone,
           setSupervisorPhone,
@@ -52,6 +62,55 @@ const Pg2UserProfile = () => {
                   autoComplete="off"
                 />
               </Form.Group>
+              <Form.Group as={Col} controlId="formUserDodId">
+                <Form.Label>DoD ID</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="DoD ID"
+                  value={dodId}
+                  onChange={(e) => setDodId(e.target.value)}
+                />
+              </Form.Group>
+            </Row>
+            <Row className="mb-3">
+              <Form.Group as={Col} controlId="formUserBranch">
+                <Form.Label>Branch of Service</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="ex. Air Force / Army"
+                  value={userBranch}
+                  onChange={(e) => setUserBranch(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group as={Col} controlId="formUserServiceType">
+                <Form.Label>Service Type</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Active/Reserve/Guard"
+                  value={userServiceType}
+                  onChange={(e) => setUserServiceType(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group as={Col} controlId="formUserRank">
+                <Form.Label>Rank</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="SrA / 1Lt"
+                  value={userRank}
+                  onChange={(e) => setUserRank(e.target.value)}
+                />
+              </Form.Group>
+              <Form.Group as={Col} controlId="formUserGrade">
+                <Form.Label>Pay Grade</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="E-4 / O-2"
+                  value={userGrade}
+                  onChange={(e) => setUserGrade(e.target.value)}
+                />
+              </Form.Group>
+            </Row>
+            <Row className="mb-3">
               <Form.Group
                 as={Col}
                 className="mb-3"

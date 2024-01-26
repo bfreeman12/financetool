@@ -17,8 +17,8 @@
 }
 .form-content p {
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 .form-content .form-button-group {
   padding: 1rem 0;
@@ -36,4 +36,4 @@
 }
 .form-content .form-page-counter p {
   margin: 0 1rem;
-}/*# sourceMappingURL=form.css.map */
+} /*# sourceMappingURL=form.css.map */

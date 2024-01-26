@@ -1,7 +1,14 @@
-import { useState, createContext } from "react";
-import { First } from "react-bootstrap/esm/PageItem";
-export const FormContext = createContext();
+import { createContext } from "react";
+import { useUserInfo } from "./formInfo/userInfo";
+import { usePayrollInfo } from "./formInfo/payrollInfo";
+import { useAdvancePayInfo } from "./formInfo/advancePayInfo";
+import { useBahInfo } from "./formInfo/bahinfo";
+import { useFsaInfo } from "./formInfo/fsainfo";
+import { useLostRecieptInfo } from "./formInfo/lostRecieptInfo";
+import { useVoucherInfo } from "./formInfo/voucherInfo";
+import { useLegalResidence } from "./formInfo/legalResidence";
 
+export const FormContext = createContext();
 export const UserContext = createContext();
 
 export const FormProvider = ({ children }) => {
@@ -13,129 +20,28 @@ export const FormProvider = ({ children }) => {
     "-" +
     String(today.getDate()).padStart(2, "0");
 
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [middleInitial, setMiddleInitial] = useState("");
-  const [ssn, setSsn] = useState("");
-  const [dutyTitle, setDutyTitle] = useState("");
-  const [address1, setAddress1] = useState("");
-  const [address2, setAddress2] = useState("");
-  const [city, setCity] = useState("");
-  const [homeState, setHomeState] = useState("");
-  const [country, setCountry] = useState("");
-  const [zipCode, setZipCode] = useState("");
-  const [workPhone, setWorkPhone] = useState("");
-  const [supervisorName, setSupervisorName] = useState("");
-  const [supervisorEmail, setSupervisorEmail] = useState("");
-  const [supervisorPhone, setSupervisorPhone] = useState("");
-  const [todaysDate, setTodaysDate] = useState(date);
-  const [email, setEmail] = useState("");
-  const [cellphone, setCellPhone] = useState("");
-  const [dob, setDob] = useState("");
-  // Payroll Fields
-  const [accountType, setAccountType] = useState("");
-  const [paymentType, setPaymentType] = useState("");
-  const [routingNumber, setRoutingNumber] = useState("");
-  const [accountNumber, setAccountNumber] = useState("");
-  const [checkDigit, setCheckDigit] = useState("");
-  const [accountTitle, setAccountTitle] = useState("");
-  const [bankName, setBankName] = useState("");
-
-  // Allotment Fields
-  const [allotmentType, setAllotmentType] = useState("");
-  const [allotteeAccountType, setAllotteeAccountType] = useState("");
-  const [allotmentAction, setAllotmentAction] = useState("");
-  const [allotmentAmount, setAllotmentAmount] = useState("");
-  const [allotmentNewTotal, setAllotmentNewTotal] = useState("");
-  const [allotteeName, setAllotteeName] = useState("");
-  const [allotteeRoutingNumber, setAllotteeRoutingNumber] = useState("");
-  const [allotteeAccountNumber, setAllotteeAccountNumber] = useState("");
-  const [allotteeCheckDigit, setAllotteeCheckDigit] = useState("");
-  const [allotteeTitle, setAllotteeTitle] = useState("");
-  const [allotteeBankName, setAllotteeBankName] = useState("");
-
-  const userProfile = {
-    firstName,
-    lastName,
-    middleInitial,
-    dutyTitle,
-    email,
-    cellphone,
-    address1,
-    address2,
-    city,
-    ssn,
-    homeState,
-    dob,
-    country,
-    zipCode,
-    workPhone,
-    supervisorName,
-    supervisorEmail,
-    supervisorPhone,
-    todaysDate,
-    setFirstName,
-    setLastName,
-    setEmail,
-    setCellPhone,
-    setMiddleInitial,
-    setDob,
-    setSsn,
-    setDutyTitle,
-    setAddress1,
-    setAddress2,
-    setCity,
-    setHomeState,
-    setCountry,
-    setZipCode,
-    setWorkPhone,
-    setSupervisorName,
-    setSupervisorEmail,
-    setSupervisorPhone,
-    setTodaysDate,
-  };
-
-  const payrollFields = {
-    accountType,
-    accountTitle,
-    paymentType,
-    routingNumber,
-    accountNumber,
-    checkDigit,
-    bankName,
-    allotmentType,
-    allotmentAction,
-    allotmentAmount,
-    allotmentNewTotal,
-    allotteeName,
-    allotteeAccountType,
-    allotteeRoutingNumber,
-    allotteeAccountNumber,
-    allotteeCheckDigit,
-    allotteeTitle,
-    allotteeBankName,
-    setAccountType,
-    setPaymentType,
-    setAccountTitle,
-    setAllotmentAction,
-    setAllotteeAccountType,
-    setRoutingNumber,
-    setAccountNumber,
-    setCheckDigit,
-    setBankName,
-    setAllotmentType,
-    setAllotmentAmount,
-    setAllotmentNewTotal,
-    setAllotteeName,
-    setAllotteeRoutingNumber,
-    setAllotteeAccountNumber,
-    setAllotteeCheckDigit,
-    setAllotteeTitle,
-    setAllotteeBankName,
-  };
+  const userProfile = useUserInfo(date);
+  const payrollFields = usePayrollInfo();
+  const advancePayFields = useAdvancePayInfo();
+  const bahFields = useBahInfo();
+  const fsaFields = useFsaInfo();
+  const lostRecieptFields = useLostRecieptInfo();
+  const voucherFields = useVoucherInfo();
+  const legalResidenceFields = useLegalResidence();
 
   return (
-    <FormContext.Provider value={{ userProfile, payrollFields }}>
+    <FormContext.Provider
+      value={{
+        userProfile,
+        payrollFields,
+        advancePayFields,
+        bahFields,
+        fsaFields,
+        lostRecieptFields,
+        voucherFields,
+        legalResidenceFields,
+      }}
+    >
       {children}
     </FormContext.Provider>
   );
