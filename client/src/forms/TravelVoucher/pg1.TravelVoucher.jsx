@@ -7,7 +7,14 @@ import Button from "react-bootstrap/Button";
 const Pg1TravelVoucher = () => {
   const [travelDetails, setTravelDetails] = useState([]);
   const { voucherFields } = useContext(FormContext);
-  const { travelVoucher, setTravelVoucher } = voucherFields;
+  const {
+    travelVoucher,
+    setTravelVoucher,
+    departure,
+    setDeparture,
+    arrival,
+    setArrival,
+  } = voucherFields;
 
   useEffect(() => {
     setTravelDetails(travelVoucher);
@@ -34,17 +41,32 @@ const Pg1TravelVoucher = () => {
     setTravelDetails(newTravelDetails);
     setTravelVoucher(newTravelDetails);
   };
+
+  const handleInputChange = (e, index, field) => {
+    const newTravelDetails = [...travelDetails];
+
+    newTravelDetails[index][field] = e.target.value;
+    setTravelDetails(newTravelDetails);
+    setTravelVoucher(newTravelDetails);
+  };
+  const handleDepartureChange = (e, field) => {
+    setDeparture((prevState) => ({
+      ...prevState,
+      [field]: e.target.value,
+    }));
+  };
+  const handleArrivalChange = (e, field) => {
+    setArrival((prevState) => ({
+      ...prevState,
+      [field]: e.target.value,
+    }));
+  };
+
   return (
     <FormContext.Consumer>
       {(value) => {
         const { travelVoucher, setTravelVoucher } = value.voucherFields; // travelVoucher is an array of objects
 
-        const handleInputChange = (e, index, field) => {
-          const newTravelDetails = [...travelDetails];
-          newTravelDetails[index][field] = e.target.value;
-          setTravelDetails(newTravelDetails);
-          setTravelVoucher(newTravelDetails);
-        };
         return (
           <>
             <h5>Itenerary</h5>
@@ -54,15 +76,31 @@ const Pg1TravelVoucher = () => {
                 <Form.Label>Departure</Form.Label>
                 <Row>
                   <Col>
-                    <Form.Control type="date" placeholder="Date" />
+                    <Form.Control
+                      type="date"
+                      placeholder="Date"
+                      value={departure.date}
+                      onChange={(e) => handleDepartureChange(e, "date")}
+                    />
                   </Col>
                   <Col>
-                    <Form.Control type="text" placeholder="Place" />
+                    <Form.Control
+                      type="text"
+                      placeholder="Place"
+                      value={departure.place}
+                      onChange={(e) => handleDepartureChange(e, "place")}
+                    />
                   </Col>
                   <Col>
                     <Form.Control
                       type="text"
                       placeholder="Means/Mode of Travel"
+                      value={departure.meansOfTravel}
+                      onChange={(e) => {
+                        if (e.target.value.length <= 2) {
+                          handleDepartureChange(e, "meansOfTravel");
+                        }
+                      }}
                     />
                   </Col>
                 </Row>
@@ -73,11 +111,19 @@ const Pg1TravelVoucher = () => {
                   <Row>
                     <Col>
                       <Form.Control
-                        type="text"
-                        placeholder="Arrival/Departure"
-                        value={travelDetail.arrivalDeparture}
+                        type="date"
+                        placeholder="Arrival"
+                        value={travelDetail.arrival}
+                        onChange={(e) => handleInputChange(e, index, "arrival")}
+                      />
+                    </Col>
+                    <Col>
+                      <Form.Control
+                        type="date"
+                        placeholder="Departure"
+                        value={travelDetail.departure}
                         onChange={(e) =>
-                          handleInputChange(e, index, "arrivalDeparture")
+                          handleInputChange(e, index, "departure")
                         }
                       />
                     </Col>
@@ -94,9 +140,11 @@ const Pg1TravelVoucher = () => {
                         type="text"
                         placeholder="Means/Mode of Travel"
                         value={travelDetail.meansOfTravel}
-                        onChange={(e) =>
-                          handleInputChange(e, index, "meansOfTravel")
-                        }
+                        onChange={(e) => {
+                          if (e.target.value.length <= 2) {
+                            handleInputChange(e, index, "meansOfTravel");
+                          }
+                        }}
                       />
                     </Col>
                     <Col>
@@ -145,19 +193,44 @@ const Pg1TravelVoucher = () => {
                 <Form.Label>Arrival</Form.Label>
                 <Row>
                   <Col>
-                    <Form.Control type="date" placeholder="Date" />
+                    <Form.Control
+                      type="date"
+                      placeholder="Date"
+                      value={arrival.date}
+                      onChange={(e) => handleArrivalChange(e, "date")}
+                    />
                   </Col>
                   <Col>
-                    <Form.Control type="text" placeholder="Place" />
+                    <Form.Control
+                      type="text"
+                      placeholder="Place"
+                      value={arrival.place}
+                      onChange={(e) => handleArrivalChange(e, "place")}
+                    />
                   </Col>
                   <Col>
-                    <Form.Control type="text" placeholder="Reason for Stop" />
+                    <Form.Control
+                      type="text"
+                      placeholder="Reason for Stop"
+                      value={arrival.reasonForStop}
+                      onChange={(e) => handleArrivalChange(e, "reasonForStop")}
+                    />
                   </Col>
                   <Col>
-                    <Form.Control type="number" placeholder="Lodging Cost" />
+                    <Form.Control
+                      type="number"
+                      placeholder="Lodging Cost"
+                      value={arrival.lodgingCost}
+                      onChange={(e) => handleArrivalChange(e, "lodgingCost")}
+                    />
                   </Col>
                   <Col>
-                    <Form.Control type="number" placeholder="POC Miles" />
+                    <Form.Control
+                      type="number"
+                      placeholder="POC Miles"
+                      value={arrival.pocMiles}
+                      onChange={(e) => handleArrivalChange(e, "pocMiles")}
+                    />
                   </Col>
                 </Row>
               </Form.Group>

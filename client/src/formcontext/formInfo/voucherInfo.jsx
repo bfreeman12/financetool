@@ -30,7 +30,8 @@ export const useVoucherInfo = () => {
   */
 
   //remarks
-
+  const [departure, setDeparture] = useState({});
+  const [arrival, setArrival] = useState({});
   const [travelVoucher, setTravelVoucher] = useState([]);
 
   const [reimbursableExpense, setReimbursableExpense] = useState([]);
@@ -43,6 +44,10 @@ export const useVoucherInfo = () => {
     reimbursableExpense,
     deductableMeals,
     remarks,
+    departure,
+    arrival,
+    setArrival,
+    setDeparture,
     setRemarks,
     setReimbursableExpense,
     setDeductableMeals,
