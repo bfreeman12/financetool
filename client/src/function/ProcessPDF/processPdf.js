@@ -22,6 +22,13 @@ export const fillDirectDepositForm = async (formUrl, pdf) => {
           field.select(fieldValue);
         } else if (field.constructor.name === "PDFTextField2") {
           field.setText(fieldValue);
+          if (fieldName === fieldValue) {
+            field.select(fieldValue);
+          }
+        } else if (field.constructor.name === "PDFCheckBox2") {
+          if (field.getName() == fieldName && fieldValue) {
+            field.check();
+          }
         } else {
           console.log(field);
         }
