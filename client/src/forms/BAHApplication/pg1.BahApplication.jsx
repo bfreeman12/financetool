@@ -6,9 +6,6 @@ import { FormContext } from "../../formcontext/form.context";
 
 //need to  fetch name dod and date from userprofile before exporting
 const Pg1BahApplication = () => {
-  const [divorced, setDivorced] = useState(false);
-  const [separated, setSeparated] = useState(false);
-
   return (
     <FormContext.Consumer>
       {(value) => {
@@ -20,6 +17,8 @@ const Pg1BahApplication = () => {
           memberStreet,
           memberCity,
           memberState,
+          divorced,
+          separated,
           memberZip,
           maritalStatus,
           spouseName,
@@ -39,6 +38,8 @@ const Pg1BahApplication = () => {
           setMemberZip,
           setMaritalStatus,
           setSpouseName,
+          setDivorced,
+          setSeparated,
           setSpouseDodId,
           setSpouseBranch,
           setSpouseDutyStation,

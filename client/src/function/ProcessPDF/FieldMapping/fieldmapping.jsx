@@ -4,8 +4,65 @@ When adding more forms ensure the key matches the shortFormUrl variable in the p
 */
 
 const fieldMapping = (pdf) => {
-  //travel voucher
-  console.log(pdf.voucherFields);
+  console.log(pdf.bahFields);
+  //bah form
+  let mbrSingleNoDep = false;
+  let mbrSingleWDeps = false;
+  let mbrMarriedCiv = false;
+  let mbrMarriedMil = false;
+
+  if (pdf.bahFields.maritalStatus == "SINGLE, NO DEPENDENTS") {
+    mbrSingleNoDep = true;
+  } else if (pdf.bahFields.maritalStatus == "SINGLE, CLAIMING DEPENDENT(S)") {
+    mbrSingleWDeps = true;
+  } else if (pdf.bahFields.maritalStatus == "MARRIED - SPOUSE IS A CIVILIAN") {
+    mbrMarriedCiv = true;
+  } else if (pdf.bahFields.maritalStatus == "MILITARY MEMBER") {
+    mbrMarriedMil = true;
+  }
+
+  let firstApplicationYes = false;
+  let firstApplicationNo = false;
+  if (pdf.bahFields.firstApplication == true) {
+    firstApplicationYes = true;
+  } else firstApplicationNo = true;
+
+  let custodyFullAmountYes = false;
+  let custodyFulLAmountNo = false;
+  if (pdf.bahFields.nonCustodialFullAmount == true) {
+    custodyFullAmountYes = true;
+  } else custodyFulLAmountNo = true;
+
+  let custodyBasedOnDivorce = false;
+  let custodyBasedOnLegalSep = false;
+  let custodyBasedOnCourtOrder = false;
+  let custodyBasedOnAgreement = false;
+  if (pdf.bahFields.custodyBasedOn == "Divorce decree") {
+    custodyBasedOnDivorce = true;
+  } else if (pdf.bahFields.custodyBasedOn == "Legal separation agreement") {
+    custodyBasedOnLegalSep = true;
+  } else if (pdf.bahFields.custodyBasedOn == "Court Order") {
+    custodyBasedOnCourtOrder = true;
+  } else if (
+    pdf.bahFields.custodyBasedOn == "Written agreement with child's custodian"
+  ) {
+    custodyBasedOnAgreement = true;
+  }
+
+  let dependentInCustody = false;
+  let dependentNotInCustody = false;
+  let notClaimingDependent = false;
+  if (pdf.bahFields.claimingDependent == "In my legal and physical custody") {
+    dependentInCustody = true;
+  } else if (
+    pdf.bahFields.claimingDependent == "Not in my legal and physical custody"
+  ) {
+    dependentNotInCustody = true;
+  } else if (pdf.bahFields.claimingDependent == "Not claiming dependent") {
+    notClaimingDependent = true;
+  }
+
+  //end bah form
 
   //advanced pay
   const expensePairs = pdf.advancePayFields.expenses.map((expense, index) => {
@@ -59,8 +116,116 @@ const fieldMapping = (pdf) => {
   //end advanced pay
 
   const fields = {
-    "daf594.pdf": {},
     "Lost Receipt Form.pdf": {},
+    "daf594.pdf": {
+      MBR_Name:
+        pdf.userProfile.lastName +
+        ", " +
+        pdf.userProfile.firstName +
+        " " +
+        pdf.userProfile.middleInitial,
+      MBR_Grade: pdf.userProfile.userGrade,
+      MBR_Duty_Location:
+        pdf.bahFields.dutyLocation +
+        " " +
+        pdf.bahFields.dutyLocationState +
+        " " +
+        pdf.bahFields.dutyLocationZip +
+        " " +
+        pdf.bahFields.dutyLocationState +
+        " " +
+        pdf.bahFields.dutyLocationCountry,
+      MBR_DoDID: pdf.userProfile.dodId,
+      MBR_Phone: pdf.userProfile.cellphone,
+      "MBR_E-Mail": pdf.userProfile.email,
+      MBR_Address:
+        pdf.bahFields.memberStreet +
+        " " +
+        pdf.bahFields.memberCity +
+        " " +
+        pdf.bahFields.memberState +
+        " " +
+        pdf.bahFields.memberZip,
+
+      MBR_Spouse_Information: pdf.bahFields.maritalStatus,
+      MBR_Single_No_Dep_Check: mbrSingleNoDep,
+      MBR_Single_Dep_Check: mbrSingleWDeps,
+      MBR_Spouse_Civ_Check: mbrMarriedCiv,
+      MBR_Spouse_Mil_Check: mbrMarriedMil,
+
+      MBR_Divorce_Check: pdf.bahFields.divorced,
+      MBR_Sep_Check: pdf.bahFields.separated,
+      MBR_Divorce_Date: pdf.bahFields.divorceDate,
+      MBR_Sep_Date: pdf.bahFields.legalSeperationDate,
+
+      MBR_Mil_Spouse_Name: pdf.bahFields.dependentMilitaryName,
+      MBR_Spouse_Duty_Station: pdf.bahFields.dependentMilitaryStation,
+      MBR_Spouse_DoDID: pdf.bahFields.dependentMilitaryDODID,
+      MBR_Spouse_Branch: pdf.bahFields.dependentMilitaryBranch,
+
+      MBR_Spouse_Information:
+        pdf.bahFields.spouseName +
+        " " +
+        pdf.bahFields.spouseDodId +
+        " " +
+        pdf.bahFields.spouseBranch +
+        " " +
+        pdf.bahFields.spouseDutyStation +
+        " " +
+        pdf.bahFields.spouseDateOfMarriage,
+
+      MBR_Dep1_Name: pdf.bahFields.dependents[0]?.name,
+      MBR_Dep1_Address: pdf.bahFields.dependents[0]?.address,
+      MBR_Dep1_Relationship: pdf.bahFields.dependents[0]?.relationship,
+      MBR_Dep1_DOB: pdf.bahFields.dependents[0]?.dob,
+
+      MBR_Dep2_Name: pdf.bahFields.dependents[1]?.name,
+      MBR_Dep2_Address: pdf.bahFields.dependents[1]?.address,
+      MBR_Dep2_Relationship: pdf.bahFields.dependents[1]?.relationship,
+      MBR_Dep2_DOB: pdf.bahFields.dependents[1]?.dob,
+
+      MBR_Dep3_Name: pdf.bahFields.dependents[2]?.name,
+      MBR_Dep3_Address: pdf.bahFields.dependents[2]?.address,
+      MBR_Dep3_Relationship: pdf.bahFields.dependents[2]?.relationship,
+      MBR_Dep3_DOB: pdf.bahFields.dependents[2]?.dob,
+
+      MBR_Dep4_Name: pdf.bahFields.dependents[3]?.name,
+      MBR_Dep4_Address: pdf.bahFields.dependents[3]?.address,
+      MBR_Dep4_Relationship: pdf.bahFields.dependents[3]?.relationship,
+      MBR_Dep4_DOB: pdf.bahFields.dependents[3]?.dob,
+
+      MBR_Dep5_Name: pdf.bahFields.dependents[4]?.name,
+      MBR_Dep5_Address: pdf.bahFields.dependents[4]?.address,
+      MBR_Dep5_Relationship: pdf.bahFields.dependents[4]?.relationship,
+      MBR_Dep5_DOB: pdf.bahFields.dependents[4]?.dob,
+
+      MBR_Dep6_Name: pdf.bahFields.dependents[5]?.name,
+      MBR_Dep6_Address: pdf.bahFields.dependents[5]?.address,
+      MBR_Dep6_Relationship: pdf.bahFields.dependents[5]?.relationship,
+      MBR_Dep6_DOB: pdf.bahFields.dependents[5]?.dob,
+
+      MBR_First_Application_Yes: firstApplicationYes,
+      MBR_First_Application_No: firstApplicationNo,
+      MBR_Certification: pdf.bahFields.memberCertification,
+
+      MBR_Support_Full_AMT_Check: custodyFullAmountYes,
+      MBR_Support_AMT_Check: custodyFulLAmountNo,
+      MBR_Support_AMT: pdf.bahFields.nonCustodialPerMonth,
+
+      MBR_Support_AMT_Divorce_Check: custodyBasedOnDivorce,
+      MBR_Support_AMT_Court_Order_Check: custodyBasedOnCourtOrder,
+      MBR_Support_AMT_Legal_Sep_Check: custodyBasedOnLegalSep,
+      MBR_Support_AMT_Agreement_Check: custodyBasedOnAgreement,
+
+      MBR_BAH_Dep_Check: notClaimingDependent,
+      MBR_BAH_Dep_In_Custody_Check: dependentInCustody,
+      MBR_BAH_Dep_Not_Custody_Check: dependentNotInCustody,
+
+      MBR_Second_DEP_date: pdf.bahFields.firstApplicationDate,
+      MBR_Custody_date: pdf.bahFields.custodyDate,
+
+      MBR_Sign_date: pdf.userProfile.todaysDate,
+    },
     //below is completed for now
     "2231 Direct Deposit Form": {
       SSN: pdf.userProfile.ssn,
@@ -103,7 +268,7 @@ const fieldMapping = (pdf) => {
         " " +
         pdf.userProfile.middleInitial,
 
-      Itin_Date: pdf.voucherFields.departure.date.replace(/-/g, ""),
+      Itin_Date: pdf.voucherFields.departure.date,
       dep1: pdf.voucherFields.departure.date,
       place1: pdf.voucherFields.departure.place,
       mode1: pdf.voucherFields.departure.meansOfTravel,

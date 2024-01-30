@@ -94,6 +94,9 @@ export const Pg2BahApplication = () => {
                   onChange={(e) => setClaimingDependent(e.target.value)}
                 >
                   <option value="">Select...</option>
+                  <option value="Not claiming dependent">
+                    Not claiming dependent
+                  </option>
                   <option value="In my legal and physical custody">
                     In my legal and physical custody
                   </option>

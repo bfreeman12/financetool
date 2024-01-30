@@ -42,7 +42,8 @@ export const Pg3BahApplication = () => {
           firstApplication,
           firstApplicationDate,
           additionalInformation,
-
+          custodyDate,
+          setCustodyDate,
           setDependentMilitaryName,
           setDependentMilitaryDODID,
           setDependentMilitaryBranch,
@@ -145,13 +146,13 @@ export const Pg3BahApplication = () => {
                 </Form.Control>
               </Form.Group>
 
-              <Form.Group as={Col} controlId="formFirstApplicationDate">
-                <Form.Label>First Application Date</Form.Label>
+              <Form.Group as={Col} controlId="formCustodyDate">
+                <Form.Label>Custody Date</Form.Label>
                 <Form.Control
-                  value={firstApplicationDate}
+                  value={custodyDate}
                   type="date"
                   placeholder="First Application Date"
-                  onChange={(e) => setFirstApplicationDate(e.target.value)}
+                  onChange={(e) => setCustodyDate(e.target.value)}
                 />
               </Form.Group>
             </Row>

@@ -29,6 +29,8 @@ export const useBahInfo = () => {
   const [spouseDutyStation, setSpouseDutyStation] = useState("");
   const [spouseDateOfMarriage, setSpouseDateOfMarriage] = useState("");
 
+  const [divorced, setDivorced] = useState(false);
+  const [separated, setSeparated] = useState(false);
   //if divorced or seperated
   const [divorceDate, setDivorceDate] = useState("");
   const [legalSeperationDate, setLegalSeperationDate] = useState("");
@@ -61,6 +63,8 @@ export const useBahInfo = () => {
   //additional information box
   const [additionalInformation, setAdditionalInformation] = useState("");
 
+  const [custodyDate, setCustodyDate] = useState("");
+
   const bahInfo = {
     dutyLocation,
     dutyLocationState,
@@ -81,6 +85,8 @@ export const useBahInfo = () => {
     nonCustodialFullAmount,
     nonCustodialPerMonth,
     custodyBasedOn,
+    custodyDate,
+    setCustodyDate,
     claimingDependent,
     claimEffectiveDate,
     dependentMilitaryName,
@@ -91,6 +97,11 @@ export const useBahInfo = () => {
     firstApplication,
     firstApplicationDate,
     additionalInformation,
+    dependents,
+    divorced,
+    separated,
+    setDivorced,
+    setSeparated,
     setDutyLocation,
     setDutyLocationState,
     setDutyLocationZip,
@@ -120,7 +131,6 @@ export const useBahInfo = () => {
     setFirstApplication,
     setFirstApplicationDate,
     setAdditionalInformation,
-    dependents,
     setDependents,
   };
 
