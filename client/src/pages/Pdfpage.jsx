@@ -61,10 +61,10 @@ const PdfPage = () => {
 
           {selectedPdfs.length > 0 ? (
             <Link className="link" to="/forms" state={{ data: selectedPdfs }}>
-              <button>Submit</button>
+              <button>Start</button>
             </Link>
           ) : (
-            <button disabled>Submit</button>
+            <button disabled>Start</button>
           )}
         </div>
       </div>
