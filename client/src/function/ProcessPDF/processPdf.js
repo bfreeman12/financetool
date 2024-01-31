@@ -25,7 +25,17 @@ export const fillForm = async (formUrls, pdf) => {
       if (field) {
         try {
           if (field.constructor.name === "PDFRadioGroup2") {
-            field.select(fieldValue);
+            const options = field.getOptions();
+
+            fieldValue.forEach((desiredOption) => {
+              if (options.includes(desiredOption)) {
+                field.select(desiredOption);
+              } else {
+                console.log(
+                  `Option ${desiredOption} not found in field ${field.getName()}`
+                );
+              }
+            });
           } else if (field.constructor.name === "PDFTextField2") {
             field.setText(fieldValue);
             if (fieldName === fieldValue) {

@@ -395,7 +395,6 @@ const fieldMapping = (pdf) => {
 
       MBR_Sign_date: pdf.userProfile.todaysDate,
     },
-    //below is completed for now
     "2231 Direct Deposit Form": {
       SSN: pdf.userProfile.ssn,
       Name:
@@ -598,6 +597,12 @@ const fieldMapping = (pdf) => {
         " " +
         pdf.userProfile.middleInitial,
       Grade: pdf.userProfile.userGrade,
+      radio: [
+        pdf.fsaFields.fsaType,
+        pdf.fsaFields.lastTdy ? "Was_Last_30" : "Was_Not_Last_30",
+        pdf.fsaFields.wasResiding ? "Was_Residing" : "Was_Not_Residing",
+      ],
+
       DoDID: pdf.userProfile.dodId,
       Branch_And_Organization:
         pdf.userProfile.userBranch + " " + pdf.fsaFields.org,
