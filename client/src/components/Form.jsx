@@ -2,7 +2,7 @@ import React, { useState, useContext, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import { FormContext } from "../formcontext/form.context";
 import "../styles/form.css";
-import { fillDirectDepositForm } from "../function/ProcessPDF/processPdf";
+import { fillForm } from "../function/ProcessPDF/processPdf";
 
 import {
   Pg1UserProfile,
@@ -68,7 +68,7 @@ const Form = ({ queue, profile }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fillDirectDepositForm(queue, context);
+    fillForm(queue, context);
   };
 
   useEffect(() => {

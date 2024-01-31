@@ -4,7 +4,7 @@ When adding more forms ensure the key matches the shortFormUrl variable in the p
 */
 
 const fieldMapping = (pdf) => {
-  console.log(pdf.bahFields);
+  console.log(pdf);
   //bah form
   let mbrSingleNoDep = false;
   let mbrSingleWDeps = false;
@@ -116,7 +116,177 @@ const fieldMapping = (pdf) => {
   //end advanced pay
 
   const fields = {
-    "Lost Receipt Form.pdf": {},
+    "Lost Receipt Form.pdf": {
+      lodging_name: pdf.lostRecieptFields.lodgingInfo[0]?.hotelName,
+      lodging_city: pdf.lostRecieptFields.lodgingInfo[0]?.hotelCity,
+      lodging_state_country: pdf.lostRecieptFields.lodgingInfo[0]?.hotelState,
+      checkin_date: pdf.lostRecieptFields.lodgingInfo[0]?.checkInDate,
+      checkout_date: pdf.lostRecieptFields.lodgingInfo[0]?.checkOutDate,
+      daily_room_rate: pdf.lostRecieptFields.lodgingInfo[0]?.dailyRoomRate,
+      daily_tax: pdf.lostRecieptFields.lodgingInfo[0]?.dailyTax,
+      total_cost: pdf.lostRecieptFields.lodgingInfo[0]?.totalCost,
+      lodging_name2: pdf.lostRecieptFields.lodgingInfo[1]?.hotelName,
+      lodging_city2: pdf.lostRecieptFields.lodgingInfo[1]?.hotelCity,
+      lodging_state_country2: pdf.lostRecieptFields.lodgingInfo[1]?.hotelState,
+      daily_tax2: pdf.lostRecieptFields.lodgingInfo[1]?.dailyTax,
+      total_cost2: pdf.lostRecieptFields.lodgingInfo[1]?.totalCost,
+      daily_room_rate2: pdf.lostRecieptFields.lodgingInfo[1]?.dailyRoomRate,
+      checkout_date2: pdf.lostRecieptFields.lodgingInfo[1]?.checkOutDate,
+      checkin_date2: pdf.lostRecieptFields.lodgingInfo[1]?.checkInDate,
+      cto_fee: pdf.lostRecieptFields.airfareInfo[0]?.ctoFee,
+      total_cost_airfare: pdf.lostRecieptFields.airfareInfo[0]?.totalCost,
+      airfare_taxes: pdf.lostRecieptFields.airfareInfo[0]?.airfareTaxes,
+      base_airfare_cost: pdf.lostRecieptFields.airfareInfo[0]?.baseAirfare,
+      date_travelled_airfare:
+        pdf.lostRecieptFields.airfareInfo[0]?.dateTravelled,
+      travelto_city_state_country:
+        pdf.lostRecieptFields.airfareInfo[0]?.travelTo,
+      travelfrom_city_state_country:
+        pdf.lostRecieptFields.airfareInfo[0]?.travelFrom,
+      airfare_carrier: pdf.lostRecieptFields.airfareInfo[0]?.carrierName,
+      airfare_carrier2: pdf.lostRecieptFields.airfareInfo[1]?.carrierName,
+      travelfrom_city_state_country2:
+        pdf.lostRecieptFields.airfareInfo[1]?.travelFrom,
+      travelto_city_state_country2:
+        pdf.lostRecieptFields.airfareInfo[1]?.travelTo,
+      date_travelled_airfare2:
+        pdf.lostRecieptFields.airfareInfo[1]?.dateTravelled,
+      base_airfare_cost2: pdf.lostRecieptFields.airfareInfo[1]?.baseAirfare,
+      airfare_taxes2: pdf.lostRecieptFields.airfareInfo[1]?.airfareTaxes,
+      cto_fee2: pdf.lostRecieptFields.airfareInfo[1]?.ctoFee,
+      rental_car_company_name: pdf.lostRecieptFields.carRentalCompanyName,
+      date_vehicle_rented: pdf.lostRecieptFields.dateRentalRented,
+      date_vehicle_returned: pdf.lostRecieptFields.dateRentalReturned,
+      basic_rental_rate: pdf.lostRecieptFields.basicRentalRate,
+      rental_taxes: pdf.lostRecieptFields.carRentalTax,
+      rental_insurance_oconus: pdf.lostRecieptFields.carRentalInsurance,
+      fuel_paid_advance: pdf.lostRecieptFields.carRentalFuelAdvance,
+      rental_total_cost: pdf.lostRecieptFields.carRentalTotalCost,
+      taxi_company_name: pdf.lostRecieptFields.taxiCompanyName,
+      taxi_travelfrom: pdf.lostRecieptFields.taxiTravelFrom,
+      taxi_travelto: pdf.lostRecieptFields.taxiTravelTo,
+      taxi_basic_fare: pdf.lostRecieptFields.taxiBasicFare,
+      taxi_tip: pdf.lostRecieptFields.taxiTip,
+      other_transport_name:
+        pdf.lostRecieptFields.otherTransportationCompanyName,
+      other_travelfrom: pdf.lostRecieptFields.otherTransportationTravelFrom,
+      other_travelto: pdf.lostRecieptFields.otherTransportationTravelTo,
+      other_travel_type: pdf.lostRecieptFields.otherTransportationType,
+      other_base_cost: pdf.lostRecieptFields.otherTransportationCost,
+      other_taxes: pdf.lostRecieptFields.otherTransportationTaxes,
+      other_tip: pdf.lostRecieptFields.otherTransportationTips,
+      other_total_cost: pdf.lostRecieptFields.otherTransportationTotalCost,
+      conference_fee: pdf.lostRecieptFields.conferenceTotalCost,
+      conference_paid_to: pdf.lostRecieptFields.conferencePaidTo,
+      conference_total_cost: pdf.lostRecieptFields.conferenceTotalCost,
+      other_expenses: pdf.lostRecieptFields.otherExpensePurpose,
+      other_date_of_expense: pdf.lostRecieptFields.otherExpenseDate,
+      shared_room_check_yes: pdf.lostRecieptFields.lodgingInfo[0]?.wasShared
+        ? true
+        : false,
+      shared_room_check_no: pdf.lostRecieptFields.lodgingInfo[0]?.wasShared
+        ? false
+        : true,
+      other_expense_total_cost: pdf.lostRecieptFields.otherExpenseTotalCost,
+      traveler_name: pdf.lostRecieptFields.travellerName,
+      date_signed: pdf.userProfile.todaysDate,
+      shared_room_orders_check_yes: pdf.lostRecieptFields.lodgingInfo[0]
+        ?.wasOnOrders
+        ? true
+        : false,
+      shared_room_orders_check_no: pdf.lostRecieptFields.lodgingInfo[0]
+        ?.wasOnOrders
+        ? false
+        : true,
+      shared_room_check_no2: pdf.lostRecieptFields.lodgingInfo[1]?.wasShared,
+      airfare_billed_check_individual:
+        pdf.lostRecieptFields.airfareInfo[0]?.airfarePurchasedWith ==
+        "My individually billed GTC / CSA"
+          ? true
+          : false,
+      ticket_purchased_cto_yes: pdf.lostRecieptFields.airfareInfo[0]
+        ?.ticketPurchasedThroughCto
+        ? true
+        : false,
+      ticket_purchased_cto_no: pdf.lostRecieptFields.airfareInfo[0]
+        ?.ticketPurchasedThroughCto
+        ? false
+        : true,
+      airfare_billed_check_unit:
+        pdf.lostRecieptFields.airfareInfo[0]?.airfarePurchasedWith ==
+        "My unit's centrally billed GTC (CBA)"
+          ? true
+          : false,
+      airfare_billed_check_personal_credit:
+        pdf.lostRecieptFields.airfareInfo[0]?.airfarePurchasedWith ==
+        "A personal credit card"
+          ? true
+          : false,
+      indirect_routing_check_yes: pdf.lostRecieptFields.airfareInfo[0]
+        ?.wasIndirectRoutingUsed
+        ? true
+        : false,
+      indirect_routing_check_no: pdf.lostRecieptFields.airfareInfo[0]
+        ?.wasIndirectRoutingUsed
+        ? false
+        : true,
+      ticket_purchased_cto_yes2: pdf.lostRecieptFields.airfareInfo[1]
+        ?.ticketPurchasedThroughCto
+        ? true
+        : false,
+      ticket_purchased_cto_no2: pdf.lostRecieptFields.airfareInfo[1]
+        ?.ticketPurchasedThroughCto
+        ? false
+        : true,
+      airfare_billed_check_individual2:
+        pdf.lostRecieptFields.airfareInfo[1]?.airfarePurchasedWith ==
+        "My individually billed GTC / CSA"
+          ? true
+          : false,
+      airfare_billed_check_unit2:
+        pdf.lostRecieptFields.airfareInfo[1]?.airfarePurchasedWith ==
+        "My unit's centrally billed GTC (CBA)"
+          ? true
+          : false,
+      airfare_billed_check_personal_credit2:
+        pdf.lostRecieptFields?.airfareInfo[1]?.airfarePurchasedWith ==
+        "A personal credit card"
+          ? true
+          : false,
+      indirect_routing_check_yes2: pdf.lostRecieptFields?.airfareInfo[1]
+        ?.wasIndirectRoutingUsed
+        ? true
+        : false,
+      indirect_routing_check_no2: pdf.lostRecieptFields?.airfareInfo[1]
+        ?.wasIndirectRoutingUsed
+        ? false
+        : true,
+      meals_included_check_yes: pdf.lostRecieptFields?.mealsIncluded
+        ? true
+        : false,
+      meals_included_check_no: pdf.lostRecieptFields?.mealsIncluded
+        ? false
+        : true,
+      lodging_included_check_yes: pdf.lostRecieptFields?.lodgingIncluded
+        ? true
+        : false,
+      lodging_included_check_no: pdf.lostRecieptFields?.lodgingIncluded
+        ? false
+        : true,
+      shared_room_check_yes2: pdf.lostRecieptFields.lodgingInfo[1]?.wasShared
+        ? true
+        : false,
+      shared_room_orders_check_yes2: pdf.lostRecieptFields?.lodgingInfo[1]
+        ?.wasOnOrders
+        ? true
+        : false,
+      shared_room_orders_check_no2: pdf.lostRecieptFields?.lodgingInfo[1]
+        ?.wasOnOrders
+        ? false
+        : true,
+      rental_total_cost2: pdf.lostRecieptFields.carRentalTotalCost,
+      taxi_total_cost: pdf.lostRecieptFields.taxiTotalCost,
+    },
     "daf594.pdf": {
       MBR_Name:
         pdf.userProfile.lastName +
@@ -147,7 +317,6 @@ const fieldMapping = (pdf) => {
         " " +
         pdf.bahFields.memberZip,
 
-      MBR_Spouse_Information: pdf.bahFields.maritalStatus,
       MBR_Single_No_Dep_Check: mbrSingleNoDep,
       MBR_Single_Dep_Check: mbrSingleWDeps,
       MBR_Spouse_Civ_Check: mbrMarriedCiv,
