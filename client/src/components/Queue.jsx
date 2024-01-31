@@ -2,18 +2,17 @@ import React from "react";
 import "../styles/forms.css";
 const Queue = (data) => {
   const queueFiles = data.data;
+
   if (queueFiles.length === 0) {
     return null;
   }
 
   return (
     <div className="queue">
-      <p>Up Next: </p>
+      <p>All Forms: </p>
       <ul className="queue-list">
         {queueFiles.map((item, index) => (
-          <li key={index} style={{ opacity: 1 - index * 0.11 }}>
-            {item}
-          </li>
+          <li key={index}>{item}</li>
         ))}
       </ul>
     </div>

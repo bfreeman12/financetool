@@ -30,6 +30,7 @@ const Form = ({ queue, profile }) => {
   const context = useContext(FormContext);
 
   const formPages = {
+    "User Profile": [<Pg1UserProfile />, <Pg2UserProfile />],
     "2231 Direct Deposit Form.pdf": [
       <Pg1DirectDeposit />,
       <Pg2DirectDeposit />,
@@ -54,11 +55,13 @@ const Form = ({ queue, profile }) => {
     "State of Legal Residence - DD Form 2058.pdf": [<Pg1LegalResidence />],
   };
 
-  const pages = [
-    <Pg1UserProfile />,
-    <Pg2UserProfile />,
-    ...queue.flatMap((form) => formPages[form] || []),
-  ];
+  const formNames = ["User Profile", ...queue];
+  const pages = formNames.flatMap((form) => formPages[form] || []);
+
+  useEffect(() => {
+    const currentFormName = formNames[Math.floor(currentPage / 2)];
+    setCurrentForm(currentFormName);
+  }, [currentPage, currentForm]);
 
   const handleNext = () => {
     if (currentPage < pages.length - 1) {
@@ -70,11 +73,6 @@ const Form = ({ queue, profile }) => {
     e.preventDefault();
     fillForm(queue, context);
   };
-
-  useEffect(() => {
-    const currentFormIndex = Math.floor(currentPage / 2);
-    setCurrentForm(queue[currentFormIndex]);
-  }, [currentPage, currentForm]);
 
   return (
     <div className="form-content">
