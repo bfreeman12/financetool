@@ -34,6 +34,17 @@
   cursor: pointer;
 }
 
+.pdf-page-footer {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.792);
+}
+
 .fa-icon {
   font-size: 24px;
 }

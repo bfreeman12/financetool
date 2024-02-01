@@ -67,6 +67,13 @@ const PdfPage = () => {
             <button disabled>Start</button>
           )}
         </div>
+        <div className="pdf-page-footer">
+          <p>Please remember to double check and sign the forms as needed</p>
+          <p>
+            Not all information from the User Profile section is needed on all
+            forms
+          </p>
+        </div>
       </div>
     </>
   );
