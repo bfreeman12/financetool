@@ -69,9 +69,13 @@ const Form = ({ queue, profile }) => {
     }
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    fillForm(queue, context);
+    try {
+      await fillForm(queue, context);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (

@@ -4,7 +4,6 @@ When adding more forms ensure the key matches the shortFormUrl variable in the p
 */
 
 const fieldMapping = (pdf) => {
-  console.log(pdf);
   //bah form
   let mbrSingleNoDep = false;
   let mbrSingleWDeps = false;

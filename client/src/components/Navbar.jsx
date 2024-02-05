@@ -1,12 +1,8 @@
 import "../styles/navbar.css";
 import { Link } from "react-router-dom";
-import { useContext } from "react";
-import { FormContext } from "../formcontext/form.context";
 function Navbar() {
-  const { resetForm } = useContext(FormContext);
   const confirmExit = () => {
     if (window.confirm("Are you sure you want to leave this page?")) {
-      resetForm();
       return true;
     }
     return false;

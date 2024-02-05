@@ -28,25 +28,6 @@ export const FormProvider = ({ children }) => {
   const lostRecieptFields = useLostRecieptInfo();
   const voucherFields = useVoucherInfo();
   const legalResidenceFields = useLegalResidence();
-  const resetForm = useCallback(() => {
-    userProfile.reset();
-    payrollFields.reset();
-    advancePayFields.reset();
-    bahFields.reset();
-    fsaFields.reset();
-    lostRecieptFields.reset();
-    voucherFields.reset();
-    legalResidenceFields.reset();
-  }, [
-    userProfile,
-    payrollFields,
-    advancePayFields,
-    bahFields,
-    fsaFields,
-    lostRecieptFields,
-    voucherFields,
-    legalResidenceFields,
-  ]);
 
   return (
     <FormContext.Provider
@@ -59,7 +40,6 @@ export const FormProvider = ({ children }) => {
         lostRecieptFields,
         voucherFields,
         legalResidenceFields,
-        resetForm, // add resetForm to the context value
       }}
     >
       {children}

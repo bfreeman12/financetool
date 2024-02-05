@@ -3,6 +3,7 @@ import fieldMapping from "./FieldMapping/fieldmapping";
 import JSZip from "jszip";
 
 export const fillForm = async (formUrls, pdf) => {
+  console.log(formUrls);
   const zip = new JSZip();
   let pdfBytes;
   let filename;
@@ -16,6 +17,12 @@ export const fillForm = async (formUrls, pdf) => {
       ignoreEncryption: true,
     });
     const form = pdfDoc.getForm();
+    console.log(formUrl);
+    if (formUrl === "2231 Direct Deposit Form.pdf") {
+      const fieldNames = form.getFields().map((field) => field.getName());
+      console.log("fieldname: ", fieldNames);
+      console.log(form.getFields());
+    }
     const mappingFields = fieldMapping(pdf); //returns an object with all of the mapped fields
     const formFieldsToSet = mappingFields[formUrl]; //returns an object with all of the mapped fields for the specific form
 
@@ -24,7 +31,7 @@ export const fillForm = async (formUrls, pdf) => {
       const field = form.getField(fieldName);
       if (field) {
         try {
-          if (field.constructor.name === "PDFRadioGroup2") {
+          if (field instanceof PDFRadioGroup) {
             const options = field.getOptions();
 
             fieldValue.forEach((desiredOption) => {
@@ -36,12 +43,12 @@ export const fillForm = async (formUrls, pdf) => {
                 );
               }
             });
-          } else if (field.constructor.name === "PDFTextField2") {
+          } else if (field instanceof PDFTextField) {
             field.setText(fieldValue);
             if (fieldName === fieldValue) {
               field.select(fieldValue);
             }
-          } else if (field.constructor.name === "PDFCheckBox2") {
+          } else if (field instanceof PDFCheckBox) {
             if (field.getName() == fieldName && fieldValue) {
               field.check();
             }
