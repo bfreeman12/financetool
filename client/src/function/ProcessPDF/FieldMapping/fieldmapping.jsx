@@ -394,7 +394,7 @@ const fieldMapping = (pdf) => {
 
       MBR_Sign_date: pdf.userProfile.todaysDate,
     },
-    "2231 Direct Deposit Form": {
+    "2231 Direct Deposit Form.pdf": {
       SSN: pdf.userProfile.ssn,
       Name:
         pdf.userProfile.lastName +
