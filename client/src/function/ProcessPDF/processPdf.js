@@ -17,12 +17,7 @@ export const fillForm = async (formUrls, pdf) => {
       ignoreEncryption: true,
     });
     const form = pdfDoc.getForm();
-    console.log(formUrl);
-    if (formUrl === "2231 Direct Deposit Form.pdf") {
-      const fieldNames = form.getFields().map((field) => field.getName());
-      console.log("fieldname: ", fieldNames);
-      console.log(form.getFields());
-    }
+
     const mappingFields = fieldMapping(pdf); //returns an object with all of the mapped fields
     const formFieldsToSet = mappingFields[formUrl]; //returns an object with all of the mapped fields for the specific form
 
